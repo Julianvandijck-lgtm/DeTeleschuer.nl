@@ -1,0 +1,156 @@
+@model PersoonsgegevensViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <title>De Teleschuer — Uw gegevens</title>
+    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #111111;
+            --color-muted: #666666;
+            --color-border: #e5e5e5;
+            --color-accent: #000000;
+            --color-error: #cc0000;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 3rem;
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Geist', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        header { padding: var(--space-5) var(--space-4) var(--space-3); }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        header p { margin: 0.5rem 0 0; color: var(--color-muted); }
+
+        main {
+            padding: 0 var(--space-4) var(--space-5);
+            max-width: 600px;
+        }
+
+        .veld {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: var(--space-3);
+        }
+
+        label { font-weight: 500; font-size: 0.95rem; }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="date"] {
+            padding: 0.65rem var(--space-2);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            background: var(--color-surface);
+        }
+
+        .fout { color: var(--color-error); font-size: 0.85rem; }
+
+        .nummerkeuze {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+        }
+
+        .knop {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: var(--space-2);
+        }
+        .terug {
+            display: inline-block;
+            margin-bottom: var(--space-2);
+            color: var(--color-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .terug:hover {
+            color: var(--color-text);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Uw gegevens</h1>
+        <p>Stap 1 van 3 — Vul uw persoonlijke gegevens in.</p>
+    </header>
+
+<main>
+    <a href="/" class="terug">← Terug naar abonnementen</a>
+    <form method="post" asp-controller="Aanvraag" asp-action="Persoonsgegevens">
+        <div class="veld">
+            <label asp-for="Naam">Volledige naam</label>
+            <input asp-for="Naam" type="text"/>
+            <span asp-validation-for="Naam" class="fout"></span>
+        </div>
+
+        <div class="veld">
+            <label asp-for="Adres">Adres</label>
+            <input asp-for="Adres" type="text"/>
+            <span asp-validation-for="Adres" class="fout"></span>
+        </div>
+
+        <div class="veld">
+            <label asp-for="Geboortedatum">Geboortedatum</label>
+            <input asp-for="Geboortedatum" type="date"/>
+            <span asp-validation-for="Geboortedatum" class="fout"></span>
+        </div>
+
+        <div class="veld">
+            <label asp-for="Email">E-mailadres</label>
+            <input asp-for="Email" type="email"/>
+            <span asp-validation-for="Email" class="fout"></span>
+        </div>
+
+        <div class="veld">
+            <label asp-for="Telefoon">Telefoonnummer</label>
+            <input asp-for="Telefoon" type="text"/>
+            <span asp-validation-for="Telefoon" class="fout"></span>
+        </div>
+
+        <div class="veld">
+            <label>Nummerkeuze (optioneel)</label>
+            <div class="nummerkeuze">
+                <input asp-for="NummerBehouden" type="checkbox"/>
+                <span>Huidig nummer behouden</span>
+            </div>
+        </div>
+
+        <button class="knop" type="submit">Volgende stap →</button>
+    </form>
+</main>
+</body>
+</html>

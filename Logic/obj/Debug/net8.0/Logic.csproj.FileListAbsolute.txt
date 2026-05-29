@@ -1,0 +1,15 @@
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/bin/Debug/net8.0/Logic.deps.json
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/bin/Debug/net8.0/Logic.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/bin/Debug/net8.0/Logic.pdb
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/bin/Debug/net8.0/Interface.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/bin/Debug/net8.0/Interface.pdb
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.csproj.AssemblyReference.cache
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.GeneratedMSBuildEditorConfig.editorconfig
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.AssemblyInfoInputs.cache
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.AssemblyInfo.cs
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.csproj.CoreCompileInputs.cache
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.csproj.Up2Date
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/refint/Logic.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.pdb
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/ref/Logic.dll

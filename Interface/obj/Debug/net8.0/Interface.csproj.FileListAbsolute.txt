@@ -1,0 +1,11 @@
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/bin/Debug/net8.0/Interface.deps.json
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/bin/Debug/net8.0/Interface.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/bin/Debug/net8.0/Interface.pdb
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/Interface.GeneratedMSBuildEditorConfig.editorconfig
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/Interface.AssemblyInfoInputs.cache
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/Interface.AssemblyInfo.cs
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/Interface.csproj.CoreCompileInputs.cache
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/Interface.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/refint/Interface.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/Interface.pdb
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Interface/obj/Debug/net8.0/ref/Interface.dll

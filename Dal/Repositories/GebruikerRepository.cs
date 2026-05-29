@@ -1,0 +1,39 @@
+using Interface.Models;
+using Interface.Repositories;
+using Microsoft.Data.SqlClient;
+
+namespace Dal.Repositories;
+
+public class GebruikerRepository : IGebruikerRepository
+{
+    private readonly string _connectionString;
+    public GebruikerRepository(string connectionString) => _connectionString = connectionString;
+
+    public Gebruiker? HaalOpViaGebruikersnaam(string gebruikersnaam)
+    {
+        using var connection = new SqlConnection(_connectionString);
+        connection.Open();
+        var sql = "SELECT ID, Gebruikersnaam, WachtwoordHash FROM Gebruiker WHERE Gebruikersnaam = @Naam";
+        using var command = new SqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@Naam", gebruikersnaam);
+        using var reader = command.ExecuteReader();
+        if (!reader.Read()) return null;
+        return new Gebruiker
+        {
+            Id = (int)reader["ID"],
+            Gebruikersnaam = (string)reader["Gebruikersnaam"],
+            WachtwoordHash = (string)reader["WachtwoordHash"]
+        };
+    }
+
+    public void Aanmaken(string gebruikersnaam, string wachtwoordHash)
+    {
+        using var connection = new SqlConnection(_connectionString);
+        connection.Open();
+        var sql = "INSERT INTO Gebruiker (Gebruikersnaam, WachtwoordHash) VALUES (@Naam, @Hash)";
+        using var command = new SqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@Naam", gebruikersnaam);
+        command.Parameters.AddWithValue("@Hash", wachtwoordHash);
+        command.ExecuteNonQuery();
+    }
+}

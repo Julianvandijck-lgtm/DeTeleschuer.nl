@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "FkzE+AAN0YI=",
+  "success": true,
+  "projectFilePath": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/Logic.csproj",
+  "expectedPackageFiles": [
+    "/Users/julianvdijck/.nuget/packages/bcrypt.net-next/4.2.0/bcrypt.net-next.4.2.0.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,117 @@
+@model LoginViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <title>De Teleschuer — Inloggen</title>
+    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #111111;
+            --color-muted: #666666;
+            --color-border: #e5e5e5;
+            --color-accent: #000000;
+            --color-error: #cc0000;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 3rem;
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Geist', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            padding: var(--space-4);
+        }
+
+        .kaart {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: var(--space-5) var(--space-4);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        h1 {
+            margin: 0 0 var(--space-3);
+            font-size: 1.75rem;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        .veld {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: var(--space-3);
+        }
+
+        label { font-weight: 500; font-size: 0.95rem; }
+
+        input[type="text"],
+        input[type="password"] {
+            padding: 0.65rem var(--space-2);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            background: var(--color-surface);
+        }
+
+        .fout { color: var(--color-error); font-size: 0.85rem; }
+
+        .knop {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <main class="kaart">
+        <h1>Dashboard</h1>
+
+        <form method="post" asp-controller="Inlog" asp-action="Inloggen">
+            <div class="veld">
+                <label asp-for="Gebruikersnaam">Gebruikersnaam</label>
+                <input asp-for="Gebruikersnaam" type="text" />
+                <span asp-validation-for="Gebruikersnaam" class="fout"></span>
+            </div>
+
+            <div class="veld">
+                <label asp-for="Wachtwoord">Wachtwoord</label>
+                <input asp-for="Wachtwoord" type="password" />
+                <span asp-validation-for="Wachtwoord" class="fout"></span>
+            </div>
+
+            @if (!ViewData.ModelState.IsValid && ViewData.ModelState.ContainsKey(""))
+            {
+                <p class="fout">Onjuiste gebruikersnaam of wachtwoord.</p>
+            }
+
+            <button class="knop" type="submit">Inloggen</button>
+        </form>
+    </main>
+</body>
+</html>

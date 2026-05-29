@@ -1,0 +1,105 @@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <title>De Teleschuer — Bijna klaar</title>
+    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #111111;
+            --color-muted: #666666;
+            --color-border: #e5e5e5;
+            --color-accent: #000000;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 3rem;
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Geist', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        header { padding: var(--space-5) var(--space-4) var(--space-3); }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        header p { margin: 0.5rem 0 0; color: var(--color-muted); }
+
+        main {
+            padding: 0 var(--space-4) var(--space-5);
+            max-width: 600px;
+        }
+
+        .uitleg {
+            background: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: var(--space-3);
+            margin-bottom: var(--space-3);
+            line-height: 1.6;
+        }
+
+        .uitleg p { margin: 0; }
+        .uitleg p + p { margin-top: var(--space-2); }
+
+        .terug {
+            display: inline-block;
+            margin-bottom: var(--space-2);
+            color: var(--color-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .terug:hover { color: var(--color-text); }
+
+        .knop {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Bijna klaar!</h1>
+        <p>Stap 3 van 3 — Bevestig uw aanvraag.</p>
+    </header>
+
+    <main>
+        <a asp-controller="Aanvraag" asp-action="Documenten" class="terug">← Terug om te controleren</a>
+
+        <div class="uitleg">
+            <p>U heeft alle stappen succesvol doorlopen. Door op <strong>Aanvraag versturen</strong> te klikken worden uw gegevens veilig naar Roland gestuurd.</p>
+            <p>Roland beoordeelt uw aanvraag persoonlijk, stelt een contract op maat op en neemt zo spoedig mogelijk contact met u op.</p>
+            <p>Wilt u nog iets controleren of aanpassen? Gebruik de terugknop hierboven om uw gegevens te wijzigen voordat u verzendt.</p>
+        </div>
+
+        <form method="post" asp-controller="Aanvraag" asp-action="Bevestigen">
+            <button class="knop" type="submit">Aanvraag versturen →</button>
+        </form>
+    </main>
+</body>
+</html>

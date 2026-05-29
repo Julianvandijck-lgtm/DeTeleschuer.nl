@@ -1,0 +1,202 @@
+@model DocumentenViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="utf-8" />
+    <title>De Teleschuer — Documenten</title>
+    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+    <style>
+        :root {
+            --color-bg: #fafafa;
+            --color-surface: #ffffff;
+            --color-text: #111111;
+            --color-muted: #666666;
+            --color-border: #e5e5e5;
+            --color-accent: #000000;
+            --color-error: #cc0000;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 3rem;
+            --radius: 12px;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            font-family: 'Geist', sans-serif;
+            background: var(--color-bg);
+            color: var(--color-text);
+        }
+
+        header { padding: var(--space-5) var(--space-4) var(--space-3); }
+
+        header h1 {
+            margin: 0;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+        }
+
+        header p { margin: 0.5rem 0 0; color: var(--color-muted); }
+
+        main {
+            padding: 0 var(--space-4) var(--space-5);
+            max-width: 600px;
+        }
+
+        .veld {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: var(--space-3);
+        }
+
+        label { font-weight: 500; font-size: 0.95rem; }
+
+        .fout { color: var(--color-error); font-size: 0.85rem; }
+
+        canvas {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            background: white;
+            cursor: crosshair;
+            touch-action: none;
+            width: 100%;
+        }
+
+        .canvas-acties {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 0.5rem;
+        }
+
+        .wis-knop {
+            background: none;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            padding: 0.4rem 0.8rem;
+            font-family: inherit;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+
+        .knop {
+            width: 100%;
+            padding: 0.85rem;
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: var(--space-2);
+        }
+
+        .terug {
+            display: inline-block;
+            margin-bottom: var(--space-2);
+            color: var(--color-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        .terug:hover {
+            color: var(--color-text);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Documenten</h1>
+        <p>Stap 2 van 3 — Upload uw documenten en zet uw handtekening.</p>
+    </header>
+
+    <main>
+        <a asp-controller="Aanvraag" asp-action="Persoonsgegevens" class="terug">← Terug naar gegevens</a>
+        <form method="post"
+              asp-controller="Aanvraag"
+              asp-action="Documenten"
+              enctype="multipart/form-data">
+
+            <div class="veld">
+                <label asp-for="FotoLegitimatie">Foto legitimatiebewijs</label>
+                <input asp-for="FotoLegitimatie" type="file" accept="image/*" />
+                <span asp-validation-for="FotoLegitimatie" class="fout"></span>
+            </div>
+
+            <div class="veld">
+                <label asp-for="FotoBankpas">Foto bankpas</label>
+                <input asp-for="FotoBankpas" type="file" accept="image/*" />
+                <span asp-validation-for="FotoBankpas" class="fout"></span>
+            </div>
+
+            <div class="veld">
+                <label>Digitale handtekening</label>
+                <canvas id="tekenCanvas" height="180"></canvas>
+                <div class="canvas-acties">
+                    <button type="button" class="wis-knop" onclick="wisCanvas()">Wissen</button>
+                </div>
+                <span id="handtekeningFout" class="fout" style="display:none;">
+                    Handtekening is verplicht.
+                </span>
+                <input type="hidden" asp-for="DigitaleHandtekening" id="DigitaleHandtekening" />
+            </div>
+
+            <button class="knop" type="submit">Volgende stap →</button>
+        </form>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('tekenCanvas');
+        const ctx = canvas.getContext('2d');
+        let tekenen = false;
+
+        canvas.width = canvas.offsetWidth;
+
+        ctx.strokeStyle = '#000';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+
+        function positie(e) {
+            const r = canvas.getBoundingClientRect();
+            const x = (e.touches ? e.touches[0].clientX : e.clientX) - r.left;
+            const y = (e.touches ? e.touches[0].clientY : e.clientY) - r.top;
+            return { x, y };
+        }
+
+        canvas.addEventListener('mousedown',  e => { tekenen = true; ctx.beginPath(); const p = positie(e); ctx.moveTo(p.x, p.y); });
+        canvas.addEventListener('mousemove',  e => { if (!tekenen) return; const p = positie(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+        canvas.addEventListener('mouseup',    () => tekenen = false);
+        canvas.addEventListener('mouseleave', () => tekenen = false);
+        canvas.addEventListener('touchstart', e => { e.preventDefault(); tekenen = true; ctx.beginPath(); const p = positie(e); ctx.moveTo(p.x, p.y); });
+        canvas.addEventListener('touchmove',  e => { e.preventDefault(); if (!tekenen) return; const p = positie(e); ctx.lineTo(p.x, p.y); ctx.stroke(); });
+        canvas.addEventListener('touchend',   () => tekenen = false);
+
+        function wisCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('DigitaleHandtekening').value = '';
+        }
+
+        function canvasLeeg() {
+            const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            return !pixels.some(p => p !== 0);
+        }
+
+        document.querySelector('form').addEventListener('submit', function (e) {
+            if (canvasLeeg()) {
+                e.preventDefault();
+                document.getElementById('handtekeningFout').style.display = 'block';
+                return;
+            }
+            document.getElementById('handtekeningFout').style.display = 'none';
+            document.getElementById('DigitaleHandtekening').value = canvas.toDataURL('image/png');
+        });
+    </script>
+</body>
+</html>

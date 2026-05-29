@@ -1,0 +1,341 @@
+{
+  "Files": [
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/css/site.css",
+      "PackagePath": "staticwebassets/css/site.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/favicon.ico",
+      "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/js/site.js",
+      "PackagePath": "staticwebassets/js/site.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/LICENSE",
+      "PackagePath": "staticwebassets/lib/bootstrap"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/css/bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.js.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.js.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/bootstrap/dist/js/bootstrap.min.js.map",
+      "PackagePath": "staticwebassets/lib/bootstrap/dist/js/bootstrap.min.js.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation-unobtrusive/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation/LICENSE.md",
+      "PackagePath": "staticwebassets/lib/jquery-validation/LICENSE.md"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation/dist/additional-methods.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation/dist/additional-methods.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/additional-methods.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation/dist/jquery.validate.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery-validation/dist/jquery.validate.min.js",
+      "PackagePath": "staticwebassets/lib/jquery-validation/dist/jquery.validate.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery/LICENSE.txt",
+      "PackagePath": "staticwebassets/lib/jquery/LICENSE.txt"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery/dist/jquery.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery/dist/jquery.min.js",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.js"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/lib/jquery/dist/jquery.min.map",
+      "PackagePath": "staticwebassets/lib/jquery/dist/jquery.min.map"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/06a06a79-a491-4259-a17b-194e356345b5.png",
+      "PackagePath": "staticwebassets/uploads/06a06a79-a491-4259-a17b-194e356345b5.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/15e243e1-cd4e-4872-a4b7-529cbb0bb627.png",
+      "PackagePath": "staticwebassets/uploads/15e243e1-cd4e-4872-a4b7-529cbb0bb627.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/1a5a5101-a96e-4b22-a45f-78146fc8a50c.png",
+      "PackagePath": "staticwebassets/uploads/1a5a5101-a96e-4b22-a45f-78146fc8a50c.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/226afd61-5629-4d60-b660-0a8208ada80d.png",
+      "PackagePath": "staticwebassets/uploads/226afd61-5629-4d60-b660-0a8208ada80d.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/288a321e-7339-430b-be64-fe2f037c2a9c.png",
+      "PackagePath": "staticwebassets/uploads/288a321e-7339-430b-be64-fe2f037c2a9c.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/3a992525-9176-47f5-aacb-952f958951bd.png",
+      "PackagePath": "staticwebassets/uploads/3a992525-9176-47f5-aacb-952f958951bd.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/441024af-41ee-4902-95e4-82e5887a8ef2.png",
+      "PackagePath": "staticwebassets/uploads/441024af-41ee-4902-95e4-82e5887a8ef2.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/5ca64c50-22ae-451b-aade-e0c9fe6dd7ab.png",
+      "PackagePath": "staticwebassets/uploads/5ca64c50-22ae-451b-aade-e0c9fe6dd7ab.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/69ba9843-fffb-4f69-aa20-a6a98233c66c.png",
+      "PackagePath": "staticwebassets/uploads/69ba9843-fffb-4f69-aa20-a6a98233c66c.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/80eb12f1-7174-4596-9d0c-7eac178d0da4.png",
+      "PackagePath": "staticwebassets/uploads/80eb12f1-7174-4596-9d0c-7eac178d0da4.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/87c0f525-700c-4734-b9a3-1d0bedde25d7.png",
+      "PackagePath": "staticwebassets/uploads/87c0f525-700c-4734-b9a3-1d0bedde25d7.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/945f9374-f615-41d9-bd61-a185aae7bda9.jpeg",
+      "PackagePath": "staticwebassets/uploads/945f9374-f615-41d9-bd61-a185aae7bda9.jpeg"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/9dbd3158-d772-4132-820c-a0e8011d2dda.png",
+      "PackagePath": "staticwebassets/uploads/9dbd3158-d772-4132-820c-a0e8011d2dda.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/9dd99b35-1f38-498d-9262-9449569b1511.png",
+      "PackagePath": "staticwebassets/uploads/9dd99b35-1f38-498d-9262-9449569b1511.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/9ec2e3ff-d324-47bc-9577-f5766504d6bd.png",
+      "PackagePath": "staticwebassets/uploads/9ec2e3ff-d324-47bc-9577-f5766504d6bd.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/b8f83169-50cc-4424-a2f4-2067a7121303.png",
+      "PackagePath": "staticwebassets/uploads/b8f83169-50cc-4424-a2f4-2067a7121303.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/d004a05e-146c-485f-bc38-44b47b0cee09.png",
+      "PackagePath": "staticwebassets/uploads/d004a05e-146c-485f-bc38-44b47b0cee09.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/e817840b-5167-4531-a619-783094b0c53e.jpeg",
+      "PackagePath": "staticwebassets/uploads/e817840b-5167-4531-a619-783094b0c53e.jpeg"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/e81abbc1-4cdb-492e-a825-5fba9aafdc13.png",
+      "PackagePath": "staticwebassets/uploads/e81abbc1-4cdb-492e-a825-5fba9aafdc13.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/fd2db047-4f7d-4f4b-aead-48fbe0309a51.png",
+      "PackagePath": "staticwebassets/uploads/fd2db047-4f7d-4f4b-aead-48fbe0309a51.png"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.Deteleschuer.nl.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.build.Deteleschuer.nl.props",
+      "PackagePath": "build\\Deteleschuer.nl.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildMultiTargeting.Deteleschuer.nl.props",
+      "PackagePath": "buildMultiTargeting\\Deteleschuer.nl.props"
+    },
+    {
+      "Id": "obj/Debug/net8.0/staticwebassets/msbuild.buildTransitive.Deteleschuer.nl.props",
+      "PackagePath": "buildTransitive\\Deteleschuer.nl.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

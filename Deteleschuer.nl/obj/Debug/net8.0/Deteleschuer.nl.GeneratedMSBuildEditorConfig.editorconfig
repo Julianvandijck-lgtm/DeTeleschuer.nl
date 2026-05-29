@@ -1,0 +1,55 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Deteleschuer.nl
+build_property.RootNamespace = Deteleschuer.nl
+build_property.ProjectDir = /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Aanvraag/Bedankt.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWFudnJhYWcvQmVkYW5rdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Aanvraag/Bevestigen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWFudnJhYWcvQmV2ZXN0aWdlbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Aanvraag/Documenten.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWFudnJhYWcvRG9jdW1lbnRlbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Aanvraag/Persoonsgegevens.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWFudnJhYWcvUGVyc29vbnNnZWdldmVucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Dashboard/Detail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0RldGFpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Dashboard/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRGFzaGJvYXJkL0luZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/Inlog/Inloggen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSW5sb2cvSW5sb2dnZW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
