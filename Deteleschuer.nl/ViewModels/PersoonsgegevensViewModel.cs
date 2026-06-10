@@ -9,7 +9,7 @@ public class PersoonsgegevensViewModel
     [Required]
     public string Adres { get; set; }
     [Required]
-    public DateTime Geboortedatum { get; set; }
+    public DateTime? Geboortedatum { get; set; }
     [Required] [EmailAddress]
     public string Email { get; set; }
     [Required]

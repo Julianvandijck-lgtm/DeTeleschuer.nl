@@ -107,7 +107,7 @@ public class AanvraagController : Controller
         {
             Naam = persoonsgegevens.Naam,
             Adres = persoonsgegevens.Adres,
-            GeboorteDatum = DateOnly.FromDateTime(persoonsgegevens.Geboortedatum),
+            GeboorteDatum = DateOnly.FromDateTime(persoonsgegevens.Geboortedatum.Value),
             Email = persoonsgegevens.Email,
             Telefoon = persoonsgegevens.Telefoon,
             FotoID = HttpContext.Session.GetString("fotoLegitimatie") ?? "",
