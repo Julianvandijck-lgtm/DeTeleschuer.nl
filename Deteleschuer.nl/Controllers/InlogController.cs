@@ -31,9 +31,9 @@ public class InlogController : Controller
         }
 
         var claims = new List<Claim> { new Claim(ClaimTypes.Name, model.Gebruikersnaam) };
-        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+        var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme); // gebruikers naam word in een coockie gestopt en asp.net stuurt deze steeds mee bij inlog scherm 
         await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(identity));
-
+                 // alvast voorbereiding voor latere stappen 
         return RedirectToAction("Index", "Dashboard");
     }
 

@@ -18,30 +18,30 @@ public class AanvraagRepository : IAanvraagRepository
     {
         using var connection = new SqlConnection(_connectionString);
         connection.Open();
-        var sql = @"INSERT INTO Aanvraag (KlantID, AbonnementID, AanvraagDatum, Status, NummerBehouden, NieuwNummer, DigitaleHandtekening, HandtekeningDatum)
-                    VALUES (@KlantID, @AbonnementID, @AanvraagDatum, @Status, @NummerBehouden, @NieuwNummer, @DigitaleHandtekening, @HandtekeningDatum)";
+        var sql = @"INSERT INTO Aanvraag (KlantID, AbonnementID, AanvraagDatum, Status, NummerBehouden, DigitaleHandtekening, HandtekeningDatum)
+                    VALUES (@KlantID, @AbonnementID, @AanvraagDatum, @Status, @NummerBehouden, @DigitaleHandtekening, @HandtekeningDatum)";
         using var command = new SqlCommand(sql, connection);
         command.Parameters.AddWithValue("@KlantID", aanvraag.KlantId);
         command.Parameters.AddWithValue("@AbonnementID", aanvraag.AbonnementId);
         command.Parameters.AddWithValue("@AanvraagDatum", aanvraag.AanvraagDatum);
         command.Parameters.AddWithValue("@Status", aanvraag.Status);
-        command.Parameters.AddWithValue("@NummerBehouden", (object?)aanvraag.NummerBehouden ?? DBNull.Value);
-        command.Parameters.AddWithValue("@NieuwNummer", (object?)aanvraag.NieuwNummer ?? DBNull.Value);
+        command.Parameters.AddWithValue("@NummerBehouden", (object?)aanvraag.NummerBehouden ?? DBNull.Value);// aankruisen is nummerbehouden
+        // kan gewoon nul zijn, niks aankruisen is nieuw nummer 
         command.Parameters.AddWithValue("@DigitaleHandtekening", aanvraag.DigitaleHandtekening);
         command.Parameters.AddWithValue("@HandtekeningDatum", aanvraag.HandtekeningDatum);
-        command.ExecuteNonQuery();
+        command.ExecuteNonQuery();// zorgt ervoor dat de database niks terugeeft hij moet alleen data gaan ontvangen (opslaan)
     }
 
     public List<AanvraagOverzichtDto> HaalAlleOp()
     {
-        var lijst = new List<AanvraagOverzichtDto>();
+        var lijst = new List<AanvraagOverzichtDto>(); // het overzicht van de aanvragen wat moet getoond worden 
         using var connection = new SqlConnection(_connectionString);
-        connection.Open();
-        var sql = @"SELECT a.ID, k.Naam, k.Email, ab.Naam AS AbonnementNaam, a.AanvraagDatum, a.Status
-                    FROM Aanvraag a
-                    JOIN Klant k ON a.KlantID = k.ID
-                    JOIN Abonnement ab ON a.AbonnementID = ab.ID
-                    ORDER BY a.AanvraagDatum DESC";
+        connection.Open();// ik gebruik de fks om gegevens te tonen van meerdere entiteiten die op de aanvragen moeten staan en die dus moeten joinen, dus select die en die en laat die zien bij klant gegevens en bij abonnement naam.
+        var sql = @"SELECT a.ID, k.Naam, k.Email, ab.Naam AS AbonnementNaam, a.AanvraagDatum, a.Status 
+                    FROM Aanvraag a 
+                    JOIN Klant k ON a.KlantID = k.ID  
+                    JOIN Abonnement ab ON a.AbonnementID = ab.ID  
+                    ORDER BY a.AanvraagDatum DESC"; // zorgt ervoor dat de nieuwe aanvragen bovenaankomen meest logisch 
         using var command = new SqlCommand(sql, connection);
         using var reader = command.ExecuteReader();
         while (reader.Read())
@@ -71,8 +71,8 @@ public class AanvraagRepository : IAanvraagRepository
         using var command = new SqlCommand(sql, connection);
         command.Parameters.AddWithValue("@Id", id);
         using var reader = command.ExecuteReader();
-        if (!reader.Read()) return null;
-        return new AanvraagDetailDto
+        if (!reader.Read()) return null; // zodat de controller dan een 404 pagina kan tonen
+        return new AanvraagDetailDto 
         {
             Id = (int)reader["ID"],
             KlantNaam = (string)reader["Naam"],
@@ -85,7 +85,7 @@ public class AanvraagRepository : IAanvraagRepository
             AbonnementNaam = (string)reader["AbonnementNaam"],
             AanvraagDatum = (DateTime)reader["AanvraagDatum"],
             Status = (string)reader["Status"],
-            NummerBehouden = reader["NummerBehouden"] == DBNull.Value ? null : (bool)reader["NummerBehouden"],
+            NummerBehouden = reader["NummerBehouden"] == DBNull.Value ? null : (bool)reader["NummerBehouden"], // crash beveiliging want je kan database taal niet casten naar bool 
             DigitaleHandtekening = (string)reader["DigitaleHandtekening"]
         };
     }
@@ -94,7 +94,7 @@ public class AanvraagRepository : IAanvraagRepository
     {
         using var connection = new SqlConnection(_connectionString);
         connection.Open();
-        var sql = "UPDATE Aanvraag SET Status = @Status WHERE ID = @Id";
+        var sql = "UPDATE Aanvraag SET Status = @Status WHERE ID = @Id";// Status aanpassen van een abonnent door de gebruiker gegevens blijven hetzelfde alleen de status word aangepast 
         using var command = new SqlCommand(sql, connection);
         command.Parameters.AddWithValue("@Status", status);
         command.Parameters.AddWithValue("@Id", id);

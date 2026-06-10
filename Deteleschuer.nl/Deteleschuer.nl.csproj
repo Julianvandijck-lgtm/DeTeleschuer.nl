@@ -16,4 +16,11 @@
       <Folder Include="Views\Shared\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="wwwroot\fonts\Switzer-Black.ttf" />
+      <_ContentIncludedByDefault Remove="wwwroot\fonts\Switzer-BlackItalic.ttf" />
+      <_ContentIncludedByDefault Remove="wwwroot\fonts\Switzer-BoldItalic.ttf" />
+      <_ContentIncludedByDefault Remove="wwwroot\fonts\Switzer-Regular.ttf" />
+    </ItemGroup>
+
 </Project>

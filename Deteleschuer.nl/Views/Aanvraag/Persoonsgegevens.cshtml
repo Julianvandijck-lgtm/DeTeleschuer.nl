@@ -1,38 +1,10 @@
 @model PersoonsgegevensViewModel
 @{
-    Layout = null;
+    ViewData["Title"] = "De Teleschuer — Uw gegevens";
 }
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="utf-8" />
-    <title>De Teleschuer — Uw gegevens</title>
-    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+
+@section Styles {
     <style>
-        :root {
-            --color-bg: #fafafa;
-            --color-surface: #ffffff;
-            --color-text: #111111;
-            --color-muted: #666666;
-            --color-border: #e5e5e5;
-            --color-accent: #000000;
-            --color-error: #cc0000;
-            --space-2: 1rem;
-            --space-3: 1.5rem;
-            --space-4: 2rem;
-            --space-5: 3rem;
-            --radius: 12px;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            font-family: 'Geist', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-        }
-
         header { padding: var(--space-5) var(--space-4) var(--space-3); }
 
         header h1 {
@@ -90,6 +62,7 @@
             cursor: pointer;
             margin-top: var(--space-2);
         }
+
         .terug {
             display: inline-block;
             margin-bottom: var(--space-2);
@@ -97,54 +70,53 @@
             text-decoration: none;
             font-size: 0.9rem;
         }
-        .terug:hover {
-            color: var(--color-text);
-        }
+
+        .terug:hover { color: var(--color-text); }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Uw gegevens</h1>
-        <p>Stap 1 van 3 — Vul uw persoonlijke gegevens in.</p>
-    </header>
+}
+
+<header>
+    <h1>Uw gegevens</h1>
+    <p>Stap 1 van 3 — Vul uw persoonlijke gegevens in.</p>
+</header>
 
 <main>
     <a href="/" class="terug">← Terug naar abonnementen</a>
     <form method="post" asp-controller="Aanvraag" asp-action="Persoonsgegevens">
         <div class="veld">
             <label asp-for="Naam">Volledige naam</label>
-            <input asp-for="Naam" type="text"/>
+            <input asp-for="Naam" type="text" />
             <span asp-validation-for="Naam" class="fout"></span>
         </div>
 
         <div class="veld">
             <label asp-for="Adres">Adres</label>
-            <input asp-for="Adres" type="text"/>
+            <input asp-for="Adres" type="text" />
             <span asp-validation-for="Adres" class="fout"></span>
         </div>
 
         <div class="veld">
             <label asp-for="Geboortedatum">Geboortedatum</label>
-            <input asp-for="Geboortedatum" type="date"/>
+            <input asp-for="Geboortedatum" type="date" />
             <span asp-validation-for="Geboortedatum" class="fout"></span>
         </div>
 
         <div class="veld">
             <label asp-for="Email">E-mailadres</label>
-            <input asp-for="Email" type="email"/>
+            <input asp-for="Email" type="email" />
             <span asp-validation-for="Email" class="fout"></span>
         </div>
 
         <div class="veld">
             <label asp-for="Telefoon">Telefoonnummer</label>
-            <input asp-for="Telefoon" type="text"/>
+            <input asp-for="Telefoon" type="text" />
             <span asp-validation-for="Telefoon" class="fout"></span>
         </div>
 
         <div class="veld">
             <label>Nummerkeuze (optioneel)</label>
             <div class="nummerkeuze">
-                <input asp-for="NummerBehouden" type="checkbox"/>
+                <input asp-for="NummerBehouden" type="checkbox" />
                 <span>Huidig nummer behouden</span>
             </div>
         </div>
@@ -152,5 +124,3 @@
         <button class="knop" type="submit">Volgende stap →</button>
     </form>
 </main>
-</body>
-</html>

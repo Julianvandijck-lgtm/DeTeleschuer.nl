@@ -8,7 +8,11 @@ public class Aanvraag
     public DateTime AanvraagDatum { get; set; }
     public required string Status { get; set; }
     public bool? NummerBehouden { get; set; }
-    public string? NieuwNummer { get; set; }
-    public required string DigitaleHandtekening  { get; set; }
+    public required string DigitaleHandtekening  { get; set; } // geen map mar gewoon string reeks tekens
     public DateTime HandtekeningDatum { get; set; }
+
+    public Aanvraag()
+    {
+        
+    }
 }

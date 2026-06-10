@@ -3,7 +3,7 @@ using Interface.Repositories;
 
 namespace DeTeleschuer.Tests.Fakes;
 
-public class FakeAbonnementRepository : IAbonnementRepository
+public class FakeAbonnementRepository : IAbonnementRepository // ik gebruik Iabonnement repository omdat de service deze verwacht maakt niet uit of ie fake is 
 {
     public List<Abonnement> HaalActieveAbonnementenOp() =>
     [

@@ -39,4 +39,14 @@ public class KlantRepository : IKlantRepository
             }
         }
     }
+    public int? HaalIdOpViaEmail(string email)
+    {
+        using var connection = new SqlConnection(_connectionString);
+        connection.Open();
+        var sql = "SELECT ID FROM Klant WHERE Email = @Email";
+        using var command = new SqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@Email", email);
+        var result = command.ExecuteScalar();
+        return result == null ? null : (int)result;
+    }
 }

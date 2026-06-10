@@ -76,3 +76,5 @@
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/bin/Debug/net8.0/Logic.pdb
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/obj/Debug/net8.0/Detelesc.03B01EB1.Up2Date
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/bin/Debug/net8.0/BCrypt-Net-Next.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/obj/Debug/net8.0/scopedcss/Views/Shared/_Layout.cshtml.rz.scp.css
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/obj/Debug/net8.0/scopedcss/projectbundle/Deteleschuer.nl.bundle.scp.css

@@ -6,13 +6,13 @@ namespace DeTeleschuer.Tests;
 public class AbonnementServiceTests
 {
     [Fact]
-    public void HaalOverzichtOp_ZonderFilter_GeeftAlleAbonnementenTerug()
+    public void HaalOverzichtOp_ZonderFilter_GeeftAlleAbonnementenTerug() // ik gebruik lange namen omdat ik meerdere dingen test van een onderwerp 
     {
         var service = new AbonnementService(new FakeAbonnementRepository());
 
         try
         {
-            var result = service.HaalOverzichtOp();
+            var result = service.HaalOverzichtOp(); // ik test hier of de service daadwerkelijk doorgeeft 
             Assert.Equal(3, result.Count);
         }
         catch (Exception ex)

@@ -17,5 +17,5 @@ public class AanvraagDetailDto
     public required string Status { get; set; }
     public bool? NummerBehouden { get; set; }
     public required string DigitaleHandtekening { get; set; }
-    public List<Notitie> Notities { get; set; } = new();
-}
+    public List<Notitie> Notities { get; set; } = new(); // list omdat het een aparte tabel krijgt in de database, maar ook omdat meerdere noties gescrhevn kunnen worden bij een aanvraag detail 
+}                                               // met = new maak ik een lege lijst aan bij de aanvraag voor notieties zodat ie altijd open staat en bijgevuld kan worden

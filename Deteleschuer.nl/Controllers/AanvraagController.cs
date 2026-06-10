@@ -8,10 +8,10 @@ namespace Deteleschuer.nl.Controllers;
 
 public class AanvraagController : Controller
 {
-    private readonly IWebHostEnvironment _env;
+    private readonly IWebHostEnvironment _env; // geeft toegang tot de map op de server waar bestanden worden opgeslagen
     private readonly IAanvraagService _aanvraagService;
 
-    public AanvraagController(IWebHostEnvironment env, IAanvraagService aanvraagService)
+    public AanvraagController(IWebHostEnvironment env, IAanvraagService aanvraagService) // niet gebonden aan concrete implementatie
     {
         _env = env;
         _aanvraagService = aanvraagService;
@@ -19,18 +19,18 @@ public class AanvraagController : Controller
 
     public IActionResult Starten(int abonnementId)
     {
-        if (abonnementId <= 0)
+        if (abonnementId <= 0) // ongeldige id stuur terug naar home
             return RedirectToAction("Index", "Home");
 
-        HttpContext.Session.SetInt32("abonnementId", abonnementId);
+        HttpContext.Session.SetInt32("abonnementId", abonnementId); // id opslaan in sessie zodat het beschikbaar blijft tijdens alle stappen
         return RedirectToAction("Persoonsgegevens");
     }
 
-    [HttpGet]
+    [HttpGet] // pagina ophalen, toont het lege formulier
     public IActionResult Persoonsgegevens()
     {
         var model = HttpContext.Session.Get<PersoonsgegevensViewModel>("persoonsgegevens")
-                    ?? new PersoonsgegevensViewModel();
+                    ?? new PersoonsgegevensViewModel(); // als al ingevuld haal op uit sessie anders leeg model
         return View(model);
     }
 
@@ -40,13 +40,13 @@ public class AanvraagController : Controller
         return View();
     }
 
-    [HttpPost]
+    [HttpPost] // formulier versturen, gegevens opslaan in sessie en doorsturen naar documenten
     public IActionResult Persoonsgegevens(PersoonsgegevensViewModel model)
     {
-        if (!ModelState.IsValid)
+        if (!ModelState.IsValid) // als er validatiefouten zijn toon het formulier opnieuw
             return View(model);
 
-        HttpContext.Session.Set("persoonsgegevens", model);
+        HttpContext.Session.Set("persoonsgegevens", model); // persoonsgegevens bewaren voor later gebruik bij bevestigen
         return RedirectToAction("Documenten");
     }
 
@@ -57,7 +57,7 @@ public class AanvraagController : Controller
     }
 
     [HttpPost]
-    public async Task<IActionResult> Documenten(DocumentenViewModel model)
+    public async Task<IActionResult> Documenten(DocumentenViewModel model) // async omdat bestanden uploaden tijd kost
     {
         if (!ModelState.IsValid)
             return View(model);
@@ -69,17 +69,17 @@ public class AanvraagController : Controller
         }
 
         var uploadsMap = Path.Combine(_env.WebRootPath, "uploads");
-        Directory.CreateDirectory(uploadsMap);
+        Directory.CreateDirectory(uploadsMap); // map aanmaken als die nog niet bestaat
 
-        var legitNaam = $"{Guid.NewGuid()}{Path.GetExtension(model.FotoLegitimatie.FileName)}";
+        var legitNaam = $"{Guid.NewGuid()}{Path.GetExtension(model.FotoLegitimatie.FileName)}"; // unieke naam zodat bestanden van verschillende klanten elkaar niet overschrijven
         using (var stream = new FileStream(Path.Combine(uploadsMap, legitNaam), FileMode.Create))
             await model.FotoLegitimatie.CopyToAsync(stream);
 
-        var bankNaam = $"{Guid.NewGuid()}{Path.GetExtension(model.FotoBankpas.FileName)}";
+        var bankNaam = $"{Guid.NewGuid()}{Path.GetExtension(model.FotoBankpas.FileName)}"; // zelfde principe voor bankpas
         using (var stream = new FileStream(Path.Combine(uploadsMap, bankNaam), FileMode.Create))
             await model.FotoBankpas.CopyToAsync(stream);
 
-        HttpContext.Session.SetString("fotoLegitimatie", legitNaam);
+        HttpContext.Session.SetString("fotoLegitimatie", legitNaam); // bestandsnamen opslaan in sessie zodat bevestigen ze kan ophalen
         HttpContext.Session.SetString("fotoBankpas", bankNaam);
         HttpContext.Session.SetString("handtekening", model.DigitaleHandtekening);
         HttpContext.Session.SetString("handtekeningDatum", DateTime.Now.ToString("o"));
@@ -92,17 +92,18 @@ public class AanvraagController : Controller
     {
         return View();
     }
+
     [HttpPost]
-    [ActionName("Bevestigen")]
+    [ActionName("Bevestigen")] // twee methodes heten bevestigen dus dit onderscheidt de post van de get
     public IActionResult BevestigenPost()
     {
-        var persoonsgegevens = HttpContext.Session.Get<PersoonsgegevensViewModel>("persoonsgegevens");
+        var persoonsgegevens = HttpContext.Session.Get<PersoonsgegevensViewModel>("persoonsgegevens"); // alles ophalen uit sessie
         var abonnementId = HttpContext.Session.GetInt32("abonnementId");
 
-        if (persoonsgegevens == null || abonnementId == null)
+        if (persoonsgegevens == null || abonnementId == null) // als sessie verlopen is terug naar home
             return RedirectToAction("Index", "Home");
 
-        var klant = new Klant
+        var klant = new Klant // klant object opbouwen vanuit sessiedata
         {
             Naam = persoonsgegevens.Naam,
             Adres = persoonsgegevens.Adres,
@@ -113,7 +114,7 @@ public class AanvraagController : Controller
             FotoBankpas = HttpContext.Session.GetString("fotoBankpas") ?? ""
         };
 
-        var aanvraag = new Aanvraag
+        var aanvraag = new Aanvraag // aanvraag object opbouwen, status altijd nieuw bij aanmaken
         {
             AbonnementId = abonnementId.Value,
             AanvraagDatum = DateTime.Now,
@@ -123,14 +124,10 @@ public class AanvraagController : Controller
             HandtekeningDatum = DateTime.Now
         };
 
-        _aanvraagService.AanvraagOpslaan(klant, aanvraag);
+        _aanvraagService.AanvraagOpslaan(klant, aanvraag); // eerst klant dan aanvraag opslaan via service
 
-        HttpContext.Session.Clear();
+        HttpContext.Session.Clear(); // sessie leegmaken want alles is opgeslagen
 
         return RedirectToAction("Bedankt");
     }
 }
-
-
-
-

@@ -1,12 +1,32 @@
 {
   "Files": [
     {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/obj/Debug/net8.0/scopedcss/projectbundle/Deteleschuer.nl.bundle.scp.css",
+      "PackagePath": "staticwebassets/Deteleschuer.nl.bundle.scp.css"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/css/index.css",
+      "PackagePath": "staticwebassets/css/index.css"
+    },
+    {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/css/site.css",
       "PackagePath": "staticwebassets/css/site.css"
     },
     {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/favicon.ico",
       "PackagePath": "staticwebassets/favicon.ico"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/img/logo-dt.png",
+      "PackagePath": "staticwebassets/img/logo-dt.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/img/odido.webp",
+      "PackagePath": "staticwebassets/img/odido.webp"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/img/vodafone.png",
+      "PackagePath": "staticwebassets/img/vodafone.png"
     },
     {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/js/site.js",
@@ -245,6 +265,10 @@
       "PackagePath": "staticwebassets/uploads/06a06a79-a491-4259-a17b-194e356345b5.png"
     },
     {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/145b5531-c3c8-40b1-a8f1-72ad210b17ba.png",
+      "PackagePath": "staticwebassets/uploads/145b5531-c3c8-40b1-a8f1-72ad210b17ba.png"
+    },
+    {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/15e243e1-cd4e-4872-a4b7-529cbb0bb627.png",
       "PackagePath": "staticwebassets/uploads/15e243e1-cd4e-4872-a4b7-529cbb0bb627.png"
     },
@@ -269,6 +293,10 @@
       "PackagePath": "staticwebassets/uploads/441024af-41ee-4902-95e4-82e5887a8ef2.png"
     },
     {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/46e7700a-cfb2-405a-9e71-754935eed711.png",
+      "PackagePath": "staticwebassets/uploads/46e7700a-cfb2-405a-9e71-754935eed711.png"
+    },
+    {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/5ca64c50-22ae-451b-aade-e0c9fe6dd7ab.png",
       "PackagePath": "staticwebassets/uploads/5ca64c50-22ae-451b-aade-e0c9fe6dd7ab.png"
     },
@@ -277,12 +305,32 @@
       "PackagePath": "staticwebassets/uploads/69ba9843-fffb-4f69-aa20-a6a98233c66c.png"
     },
     {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/6ee47c72-ae35-437d-8ca8-0b70c96a0c51.png",
+      "PackagePath": "staticwebassets/uploads/6ee47c72-ae35-437d-8ca8-0b70c96a0c51.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/7cf368d8-2737-4dc3-b030-7ed2a6946253.png",
+      "PackagePath": "staticwebassets/uploads/7cf368d8-2737-4dc3-b030-7ed2a6946253.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/801bf1d3-bb57-4070-a606-17c89048ac4e.png",
+      "PackagePath": "staticwebassets/uploads/801bf1d3-bb57-4070-a606-17c89048ac4e.png"
+    },
+    {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/80eb12f1-7174-4596-9d0c-7eac178d0da4.png",
       "PackagePath": "staticwebassets/uploads/80eb12f1-7174-4596-9d0c-7eac178d0da4.png"
     },
     {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/87c0f525-700c-4734-b9a3-1d0bedde25d7.png",
       "PackagePath": "staticwebassets/uploads/87c0f525-700c-4734-b9a3-1d0bedde25d7.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/8f6c42e5-8da3-4724-97d7-b176b4c3e495.png",
+      "PackagePath": "staticwebassets/uploads/8f6c42e5-8da3-4724-97d7-b176b4c3e495.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/904af565-1835-42e3-8d20-96a5e6f0f44e.png",
+      "PackagePath": "staticwebassets/uploads/904af565-1835-42e3-8d20-96a5e6f0f44e.png"
     },
     {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/945f9374-f615-41d9-bd61-a185aae7bda9.jpeg",
@@ -301,12 +349,24 @@
       "PackagePath": "staticwebassets/uploads/9ec2e3ff-d324-47bc-9577-f5766504d6bd.png"
     },
     {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/9faf925f-e657-4b20-b835-331487d045c7.png",
+      "PackagePath": "staticwebassets/uploads/9faf925f-e657-4b20-b835-331487d045c7.png"
+    },
+    {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/b8f83169-50cc-4424-a2f4-2067a7121303.png",
       "PackagePath": "staticwebassets/uploads/b8f83169-50cc-4424-a2f4-2067a7121303.png"
     },
     {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/d004a05e-146c-485f-bc38-44b47b0cee09.png",
       "PackagePath": "staticwebassets/uploads/d004a05e-146c-485f-bc38-44b47b0cee09.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/d1a0b79c-15ea-437e-be52-18689cd3d3fe.png",
+      "PackagePath": "staticwebassets/uploads/d1a0b79c-15ea-437e-be52-18689cd3d3fe.png"
+    },
+    {
+      "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/e7a4f5b1-967c-4519-96ed-8d3fd5f146fd.png",
+      "PackagePath": "staticwebassets/uploads/e7a4f5b1-967c-4519-96ed-8d3fd5f146fd.png"
     },
     {
       "Id": "/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Deteleschuer.nl/wwwroot/uploads/e817840b-5167-4531-a619-783094b0c53e.jpeg",

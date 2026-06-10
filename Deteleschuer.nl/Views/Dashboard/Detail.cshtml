@@ -1,29 +1,10 @@
 @model AanvraagDetailDto
 @{
-    Layout = null;
+    ViewData["Title"] = "De Teleschuer — Aanvraag";
 }
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="utf-8" />
-    <title>De Teleschuer — Aanvraag</title>
-    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+
+@section Styles {
     <style>
-        :root {
-            --color-bg: #fafafa;
-            --color-surface: #ffffff;
-            --color-text: #111111;
-            --color-muted: #666666;
-            --color-border: #e5e5e5;
-            --color-accent: #000000;
-            --space-2: 1rem;
-            --space-3: 1.5rem;
-            --space-4: 2rem;
-            --space-5: 3rem;
-            --radius: 12px;
-        }
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: 'Geist', sans-serif; background: var(--color-bg); color: var(--color-text); }
         header { padding: var(--space-4); display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--color-border); }
         header h1 { margin: 0; font-size: 1.5rem; font-weight: 600; }
         .terug { color: var(--color-muted); text-decoration: none; font-size: 0.9rem; }
@@ -41,87 +22,85 @@
         .notitie-item { border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-2); margin-bottom: var(--space-2); }
         .notitie-datum { font-size: 0.8rem; color: var(--color-muted); margin-bottom: 0.4rem; }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Aanvraag — @Model.KlantNaam</h1>
-        <a asp-controller="Dashboard" asp-action="Index" class="terug">← Terug naar overzicht</a>
-    </header>
+}
 
-    <main>
-        <div class="sectie">
-            <h2>Persoonsgegevens</h2>
-            <div class="rij"><span class="label">Naam</span><span>@Model.KlantNaam</span></div>
-            <div class="rij"><span class="label">Adres</span><span>@Model.KlantAdres</span></div>
-            <div class="rij"><span class="label">Geboortedatum</span><span>@Model.KlantGeboortedatum.ToString("dd-MM-yyyy")</span></div>
-            <div class="rij"><span class="label">E-mail</span><span>@Model.KlantEmail</span></div>
-            <div class="rij"><span class="label">Telefoon</span><span>@Model.KlantTelefoon</span></div>
-            <div class="rij"><span class="label">Abonnement</span><span>@Model.AbonnementNaam</span></div>
-            <div class="rij"><span class="label">Nummerbehoud</span><span>@(Model.NummerBehouden == true ? "Ja" : "Nee")</span></div>
-            <div class="rij"><span class="label">Aanvraagdatum</span><span>@Model.AanvraagDatum.ToString("dd-MM-yyyy")</span></div>
-        </div>
+<header>
+    <h1>Aanvraag — @Model.KlantNaam</h1>
+    <a asp-controller="Dashboard" asp-action="Index" class="terug">← Terug naar overzicht</a>
+</header>
 
-        <div class="sectie">
-            <h2>Documenten</h2>
-            <div class="fotos">
-                <div>
-                    <div class="label" style="margin-bottom:0.4rem;">Legitimatiebewijs</div>
-                    <img src="/uploads/@Model.FotoLegitimatie" alt="Legitimatie" />
-                </div>
-                <div>
-                    <div class="label" style="margin-bottom:0.4rem;">Bankpas</div>
-                    <img src="/uploads/@Model.FotoBankpas" alt="Bankpas" />
-                </div>
+<main>
+    <div class="sectie">
+        <h2>Persoonsgegevens</h2>
+        <div class="rij"><span class="label">Naam</span><span>@Model.KlantNaam</span></div>
+        <div class="rij"><span class="label">Adres</span><span>@Model.KlantAdres</span></div>
+        <div class="rij"><span class="label">Geboortedatum</span><span>@Model.KlantGeboortedatum.ToString("dd-MM-yyyy")</span></div>
+        <div class="rij"><span class="label">E-mail</span><span>@Model.KlantEmail</span></div>
+        <div class="rij"><span class="label">Telefoon</span><span>@Model.KlantTelefoon</span></div>
+        <div class="rij"><span class="label">Abonnement</span><span>@Model.AbonnementNaam</span></div>
+        <div class="rij"><span class="label">Nummerbehoud</span><span>@(Model.NummerBehouden == true ? "Ja" : "Nee")</span></div>
+        <div class="rij"><span class="label">Aanvraagdatum</span><span>@Model.AanvraagDatum.ToString("dd-MM-yyyy")</span></div>
+    </div>
+
+    <div class="sectie">
+        <h2>Documenten</h2>
+        <div class="fotos">
+            <div>
+                <div class="label" style="margin-bottom:0.4rem;">Legitimatiebewijs</div>
+                <img src="/uploads/@Model.FotoLegitimatie" alt="Legitimatie" />
+            </div>
+            <div>
+                <div class="label" style="margin-bottom:0.4rem;">Bankpas</div>
+                <img src="/uploads/@Model.FotoBankpas" alt="Bankpas" />
             </div>
         </div>
+    </div>
 
-        <div class="sectie handtekening">
-            <h2>Digitale handtekening</h2>
-            <img src="@Model.DigitaleHandtekening" alt="Handtekening" />
-        </div>
+    <div class="sectie handtekening">
+        <h2>Digitale handtekening</h2>
+        <img src="@Model.DigitaleHandtekening" alt="Handtekening" />
+    </div>
 
-        <div class="sectie">
-            <form method="post" asp-controller="Dashboard" asp-action="StatusBijwerken">
-                <input type="hidden" name="id" value="@Model.Id" />
-                <select name="status">
-                    @foreach (var s in new[] { "Nieuw", "In behandeling", "Afgerond" })
+    <div class="sectie">
+        <form method="post" asp-controller="Dashboard" asp-action="StatusBijwerken">
+            <input type="hidden" name="id" value="@Model.Id" />
+            <select name="status">
+                @foreach (var s in new[] { "Nieuw", "In behandeling", "Afgerond" })
+                {
+                    if (s == Model.Status)
                     {
-                        if (s == Model.Status)
-                        {
-                            <option value="@s" selected>@s</option>
-                        }
-                        else
-                        {
-                            <option value="@s">@s</option>
-                        }
+                        <option value="@s" selected>@s</option>
                     }
-                </select>
-                <button class="knop" type="submit">Opslaan</button>
-            </form>
-        </div>
+                    else
+                    {
+                        <option value="@s">@s</option>
+                    }
+                }
+            </select>
+            <button class="knop" type="submit">Opslaan</button>
+        </form>
+    </div>
 
-        <div class="sectie">
-            <h2>Notities</h2>
+    <div class="sectie">
+        <h2>Notities</h2>
 
-            @foreach (var notitie in Model.Notities)
-            {
-                <div class="notitie-item">
-                    <div class="notitie-datum">@notitie.DatumAangemaakt.ToString("dd-MM-yyyy HH:mm")</div>
-                    <form method="post" asp-controller="Dashboard" asp-action="NotitieBijwerken">
-                        <input type="hidden" name="id" value="@notitie.Id" />
-                        <input type="hidden" name="aanvraagId" value="@Model.Id" />
-                        <textarea name="tekst">@notitie.Tekst</textarea>
-                        <button class="knop" type="submit">Opslaan</button>
-                    </form>
-                </div>
-            }
+        @foreach (var notitie in Model.Notities)
+        {
+            <div class="notitie-item">
+                <div class="notitie-datum">@notitie.DatumAangemaakt.ToString("dd-MM-yyyy HH:mm")</div>
+                <form method="post" asp-controller="Dashboard" asp-action="NotitieBijwerken">
+                    <input type="hidden" name="id" value="@notitie.Id" />
+                    <input type="hidden" name="aanvraagId" value="@Model.Id" />
+                    <textarea name="tekst">@notitie.Tekst</textarea>
+                    <button class="knop" type="submit">Opslaan</button>
+                </form>
+            </div>
+        }
 
-            <form method="post" asp-controller="Dashboard" asp-action="NotitieOpslaan" style="margin-top:var(--space-2);">
-                <input type="hidden" name="aanvraagId" value="@Model.Id" />
-                <textarea name="tekst" placeholder="Nieuwe notitie..."></textarea>
-                <button class="knop" type="submit">Notitie toevoegen</button>
-            </form>
-        </div>
-    </main>
-</body>
-</html>
+        <form method="post" asp-controller="Dashboard" asp-action="NotitieOpslaan" style="margin-top:var(--space-2);">
+            <input type="hidden" name="aanvraagId" value="@Model.Id" />
+            <textarea name="tekst" placeholder="Nieuwe notitie..."></textarea>
+            <button class="knop" type="submit">Notitie toevoegen</button>
+        </form>
+    </div>
+</main>

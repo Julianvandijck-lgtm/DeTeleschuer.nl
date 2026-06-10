@@ -1,185 +1,94 @@
 @model List<AbonnementDto>
-@{
-    Layout = null;
+@{// ❯ het zorgt ervoor dat de juiste list die in controller word gereturned en word gebruikt voor deze view en voila hij heeft alle juiste gegevens die op de pagina moeten getoond worden.
+    ViewData["Title"] = "De Teleschuer — Kies uw abonnement";
 }
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>De Teleschuer — Kies uw abonnement</title>
-    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
-    <style>
-        :root {
-            --color-bg: #fafafa;
-            --color-surface: #ffffff;
-            --color-text: #111111;
-            --color-muted: #666666;
-            --color-border: #e5e5e5;
-            --color-accent: #000000;
-            --space-2: 1rem;
-            --space-3: 1.5rem;
-            --space-4: 2rem;
-            --space-5: 3rem;
-            --radius: 12px;
-        }
 
-        * { box-sizing: border-box; }
+@section Styles {
+    <link rel="stylesheet" href="~/css/fonts.css" />
+    <link rel="stylesheet" href="~/css/index.css" />
+}
 
-        body {
-            margin: 0;
-            font-family: 'Geist', sans-serif;
-            color: var(--color-text);
-            background: var(--color-bg);
-            line-height: 1.5;
-        }
+<header class="site-header">
+    <div class="site-header__inner">
+        <a class="brand" href="/">
+            <img src="~/img/logo-dt.png" alt="DeTeleschuer.nl" />
+        </a>
+    </div>
+</header>
 
-        header {
-            padding: var(--space-5) var(--space-4) var(--space-3);
-        }
+<div class="page">
 
-        header h1 {
-            margin: 0;
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-        }
-
-        main {
-            padding: 0 var(--space-4) var(--space-5);
-            container-type: inline-size;
-            container-name: catalog;
-        }
-
-        .filter {
-            display: flex;
-            gap: var(--space-2);
-            align-items: center;
-            margin-bottom: var(--space-4);
-        }
-
-        .filter select,
-        .filter button {
-            font-family: inherit;
-            font-size: 1rem;
-            padding: 0.5rem var(--space-2);
-            border-radius: var(--radius);
-        }
-
-        .filter select {
-            border: 1px solid var(--color-border);
-            background: var(--color-surface);
-        }
-
-        .filter button {
-            background: var(--color-accent);
-            color: var(--color-surface);
-            border: none;
-            cursor: pointer;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-3);
-        }
-
-        @@container catalog (min-width: 600px) {
-            .cards { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @@container catalog (min-width: 960px) {
-            .cards { grid-template-columns: repeat(3, 1fr); }
-        }
-
-        .card {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-2);
-            padding: var(--space-3);
-            background: var(--color-surface);
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius);
-        }
-
-        .card-provider {
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--color-muted);
-        }
-
-        .card-name {
-            margin: 0;
-            font-size: 1.5rem;
-            font-weight: 600;
-        }
-
-        .card-price {
-            font-size: 2rem;
-            font-weight: 500;
-            letter-spacing: -0.02em;
-        }
-
-        .card-description {
-            color: var(--color-muted);
-            flex: 1;
-        }
-
-        .card-button {
-            margin-top: auto;
-            padding: 0.75rem var(--space-2);
-            background: var(--color-accent);
-            color: var(--color-surface);
-            border-radius: var(--radius);
-            text-align: center;
-            text-decoration: none;
-            font-weight: 500;
-            
-        }
-
-        .empty {
-            color: var(--color-muted);
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h2>DeTeleschuer.nl</h2>
-        <h1>Kies uw abonnement !</h1>
+    <header class="hero">
+        <h1>Kies het abonnement dat bij u past</h1>
+        <p>Bekijk hieronder alle beschikbare abonnementen van Vodafone en Odido. Wilt u meer weten over een abonnement of de werkwijze? Neem dan eerst contact op met Roland, hij helpt u graag verder.</p>
     </header>
 
-    <main>
+    <div class="filter-row">
         <form class="filter" method="get">
-            <label for="provider-select">Provider:</label>
+        <label for="provider-select">Provider</label>
+        <span class="filter__select">
             <select id="provider-select" name="provider">
-                <option value="">Alle</option>
+                <option value="">Alle providers</option>
                 <option value="Odido">Odido</option>
                 <option value="Vodafone">Vodafone</option>
             </select>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+        </span>
             <button type="submit">Toepassen</button>
         </form>
+    </div>
 
-        @if (Model.Count == 0)
-        {
-            <p class="empty">Er zijn op dit moment geen actieve abonnementen beschikbaar.</p>
-        }
-        else
-        {
-            <div class="cards">
-                @foreach (var abonnement in Model)
-                {
-                    <article class="card">
-                        <span class="card-provider">@abonnement.Provider</span>
-                        <h2 class="card-name">@abonnement.Naam</h2>
-                        <div class="card-price">€ @abonnement.PrijsPerMaand.ToString("0.00") /maand</div>
-                        <p class="card-description">@abonnement.Beschrijving</p>
-                        <a class="card-button" href="/aanvraag/starten?abonnementId=@abonnement.Id">Kies dit abonnement</a>
-                    </article>
-                }
-            </div>
-        }
-    </main>
-</body>
-</html>
+    @if (Model.Count == 0) // als de lijst leeg is toon een melding anders de kaarten
+    {
+        <p class="empty">Er zijn op dit moment geen actieve abonnementen beschikbaar.</p>
+    }
+    else
+    {
+        <div class="cards">
+            @foreach (var abonnement in Model) //loop door elk abonnement en maak een kaart aan
+            {
+                var naamDelen = abonnement.Naam.Split(new[] { ' ' }, 2); //naam splitsen op eerste spatie zodat eerste woord apart gestijld kan worden
+                var voorwoord = naamDelen[0];
+                var hoofdwoord = naamDelen.Length > 1 ? naamDelen[1] : "";
+                var providerClass = abonnement.Provider == "Vodafone" ? "card--vodafone" : "card--odido"; //juiste css klasse op basis van provider
+
+                <article class="card @providerClass">
+                    <div class="card__head">
+                        <h2 class="card__title">
+                            <span class="pre">@voorwoord</span>
+                            @if (!string.IsNullOrEmpty(hoofdwoord))
+                            {
+                                <span class="main">@hoofdwoord</span>
+                            }
+                        </h2>
+                        <span class="card__logo">
+                            @if (abonnement.Provider == "Vodafone")
+                            {
+                                <img src="~/img/vodafone.png" alt="Vodafone" />
+                            }
+                            else if (abonnement.Provider == "Odido")
+                            {
+                                <img src="~/img/odido.webp" alt="Odido" />
+                            }
+                        </span>
+                    </div>
+
+                    <p class="card__desc">@abonnement.Beschrijving</p>
+
+                    <div class="card__divider"></div>
+
+                    <div class="card__foot">
+                        <span class="card__price">
+                            <span class="amount">&euro;@abonnement.PrijsPerMaand.ToString("0.00")</span> @* altijd 2 decimalen tonen *@
+                            <span class="per">/maand</span>
+                        </span>
+                        <a class="card__btn" href="/aanvraag/starten?abonnementId=@abonnement.Id">Kies</a> @* id meesturen zodat de aanvraag weet welk abonnement gekozen is *@
+                    </div>
+                </article>
+            }
+        </div>
+    }
+
+</div>

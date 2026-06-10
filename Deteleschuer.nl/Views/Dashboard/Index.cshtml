@@ -1,37 +1,10 @@
 @model List<AanvraagOverzichtDto>
 @{
-    Layout = null;
+    ViewData["Title"] = "De Teleschuer — Dashboard";
 }
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="utf-8" />
-    <title>De Teleschuer — Dashboard</title>
-    <link rel="stylesheet" href="https://geistfont.vercel.app/geist.css" />
+
+@section Styles {
     <style>
-        :root {
-            --color-bg: #fafafa;
-            --color-surface: #ffffff;
-            --color-text: #111111;
-            --color-muted: #666666;
-            --color-border: #e5e5e5;
-            --color-accent: #000000;
-            --space-2: 1rem;
-            --space-3: 1.5rem;
-            --space-4: 2rem;
-            --space-5: 3rem;
-            --radius: 12px;
-        }
-
-        * { box-sizing: border-box; }
-
-        body {
-            margin: 0;
-            font-family: 'Geist', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-        }
-
         header {
             padding: var(--space-4);
             display: flex;
@@ -89,46 +62,44 @@
 
         .leeg { color: var(--color-muted); }
     </style>
-</head>
-<body>
-    <header>
-        <h1>Aanvragen</h1>
-        <a asp-controller="Inlog" asp-action="Uitloggen" class="uitloggen">Uitloggen</a>
-    </header>
+}
 
-    <main>
-        @if (Model.Count == 0)
-        {
-            <p class="leeg">Er zijn nog geen aanvragen ingediend.</p>
-        }
-        else
-        {
-            <table>
-                <thead>
+<header>
+    <h1>Aanvragen</h1>
+    <a asp-controller="Inlog" asp-action="Uitloggen" class="uitloggen">Uitloggen</a>
+</header>
+
+<main>
+    @if (Model.Count == 0)
+    {
+        <p class="leeg">Er zijn nog geen aanvragen ingediend.</p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Naam</th>
+                    <th>E-mail</th>
+                    <th>Abonnement</th>
+                    <th>Datum</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var aanvraag in Model)
+                {
                     <tr>
-                        <th>Naam</th>
-                        <th>E-mail</th>
-                        <th>Abonnement</th>
-                        <th>Datum</th>
-                        <th>Status</th>
-                        <th></th>
+                        <td>@aanvraag.KlantNaam</td>
+                        <td>@aanvraag.KlantEmail</td>
+                        <td>@aanvraag.AbonnementNaam</td>
+                        <td>@aanvraag.AanvraagDatum.ToString("dd-MM-yyyy")</td>
+                        <td>@aanvraag.Status</td>
+                        <td><a class="detail-link" asp-controller="Dashboard" asp-action="Detail" asp-route-id="@aanvraag.Id">Bekijken →</a></td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach (var aanvraag in Model)
-                    {
-                        <tr>
-                            <td>@aanvraag.KlantNaam</td>
-                            <td>@aanvraag.KlantEmail</td>
-                            <td>@aanvraag.AbonnementNaam</td>
-                            <td>@aanvraag.AanvraagDatum.ToString("dd-MM-yyyy")</td>
-                            <td>@aanvraag.Status</td>
-                            <td><a class="detail-link" asp-controller="Dashboard" asp-action="Detail" asp-route-id="@aanvraag.Id">Bekijken →</a></td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        }
-    </main>
-</body>
-</html>
+                }
+            </tbody>
+        </table>
+    }
+</main>
