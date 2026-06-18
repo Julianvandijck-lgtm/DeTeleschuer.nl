@@ -1,0 +1,4 @@
+- [Applicatie leren — Abonnement doorloop](project_applicatie_leren.md) — leertraject lijn-voor-lijn door Abonnement code, gestopt bij vraag 17 in AbonnementRepository.cs
+- [Constructor aanpassen — verbeterplan](project_constructor_aanpassen.md) — start bij trigger "Constructor aanpassen": constructors, DTOs naar DAL, try-catch in repositories
+- [Werkwijze — eerst uitleggen, dan aanpassen](feedback_werkwijze.md) — altijd eerst uitleggen wat er gaat veranderen, wachten op goedkeuring, dan pas aanpassen
+- [IAanvraagService en IInlogService bewaren](project_aanvraag_inlog_service.md) — blijven voorlopig als interface, worden later in een eigen refactor-ronde aangepakt

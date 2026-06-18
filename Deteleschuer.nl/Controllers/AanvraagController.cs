@@ -103,16 +103,15 @@ public class AanvraagController : Controller
         if (persoonsgegevens == null || abonnementId == null) // als sessie verlopen is terug naar home
             return RedirectToAction("Index", "Home");
 
-        var klant = new Klant // klant object opbouwen vanuit sessiedata
-        {
-            Naam = persoonsgegevens.Naam,
-            Adres = persoonsgegevens.Adres,
-            GeboorteDatum = DateOnly.FromDateTime(persoonsgegevens.Geboortedatum.Value),
-            Email = persoonsgegevens.Email,
-            Telefoon = persoonsgegevens.Telefoon,
-            FotoID = HttpContext.Session.GetString("fotoLegitimatie") ?? "",
-            FotoBankpas = HttpContext.Session.GetString("fotoBankpas") ?? ""
-        };
+        var klant = new Klant(
+            naam: persoonsgegevens.Naam,
+            adres: persoonsgegevens.Adres,
+            geboorteDatum: DateOnly.FromDateTime(persoonsgegevens.Geboortedatum.Value),
+            email: persoonsgegevens.Email,
+            telefoon: persoonsgegevens.Telefoon,
+            fotoId: HttpContext.Session.GetString("fotoLegitimatie") ?? "",
+            fotoBankpas: HttpContext.Session.GetString("fotoBankpas") ?? ""
+        );
 
         var aanvraag = new Aanvraag // aanvraag object opbouwen, status altijd nieuw bij aanmaken
         {

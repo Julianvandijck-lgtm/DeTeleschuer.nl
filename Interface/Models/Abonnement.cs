@@ -1,12 +1,32 @@
-namespace Interface.Models;
+using Interface.Enums;
 
+namespace Interface.Models;
 
 public class Abonnement
 {
-    public int Id { get; set; }
-    public required string Naam { get; set; }
-    public required string Provider { get; set; }
-    public decimal PrijsPerMaand {get; set;}
-    public bool IsActief { get; set; }
-    public required string Beschrijving { get; set; }
+    public int Id { get; }
+    public string Naam { get; }
+    public Provider Provider { get; }
+    public decimal PrijsPerMaand { get; }
+    public bool IsActief { get; }
+    public string Beschrijving { get; }
+
+    public Abonnement(int id, string naam, Provider provider, decimal prijsPerMaand, string beschrijving, bool isActief = false)
+    {
+        if (string.IsNullOrWhiteSpace(naam))
+            throw new ArgumentException("Naam mag niet leeg zijn.", nameof(naam));
+        if (string.IsNullOrWhiteSpace(beschrijving))
+            throw new ArgumentException("Beschrijving mag niet leeg zijn.", nameof(beschrijving));
+        if (prijsPerMaand < 0)
+            throw new ArgumentException("PrijsPerMaand mag niet negatief zijn.", nameof(prijsPerMaand));
+        if (!Enum.IsDefined(typeof(Provider), provider))
+            throw new ArgumentException("Ongeldige provider opgegeven.", nameof(provider));
+
+        Id = id;
+        Naam = naam;
+        Provider = provider;
+        PrijsPerMaand = prijsPerMaand;
+        Beschrijving = beschrijving;
+        IsActief = isActief;
+    }
 }

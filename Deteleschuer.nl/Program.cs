@@ -14,7 +14,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddScoped<IAbonnementRepository>(sp => new AbonnementRepository(connectionString));
 
-builder.Services.AddScoped<IAbonnementService, AbonnementService>();
+builder.Services.AddScoped<AbonnementService>();
 
 builder.Services.AddSession();
 

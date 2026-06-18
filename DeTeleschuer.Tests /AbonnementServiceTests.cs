@@ -1,4 +1,6 @@
 using DeTeleschuer.Tests.Fakes;
+using Interface.Enums;
+using Interface.Models;
 using Logic.Services;
 
 namespace DeTeleschuer.Tests;
@@ -6,19 +8,13 @@ namespace DeTeleschuer.Tests;
 public class AbonnementServiceTests
 {
     [Fact]
-    public void HaalOverzichtOp_ZonderFilter_GeeftAlleAbonnementenTerug() // ik gebruik lange namen omdat ik meerdere dingen test van een onderwerp 
+    public void HaalOverzichtOp_ZonderFilter_GeeftAlleActieveAbonnementenTerug()
     {
         var service = new AbonnementService(new FakeAbonnementRepository());
 
-        try
-        {
-            var result = service.HaalOverzichtOp(); // ik test hier of de service daadwerkelijk doorgeeft 
-            Assert.Equal(3, result.Count);
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
+        List<Abonnement> result = service.HaalOverzichtOp();
+
+        Assert.Equal(3, result.Count);
     }
 
     [Fact]
@@ -26,52 +22,24 @@ public class AbonnementServiceTests
     {
         var service = new AbonnementService(new FakeAbonnementRepository());
 
-        try
-        {
-            var result = service.HaalOverzichtOp("Odido");
-            Assert.Equal(2, result.Count);
-            Assert.All(result, a => Assert.Equal("Odido", a.Provider));
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
+        List<Abonnement> result = service.HaalOverzichtOp(Provider.Odido);
+
+        Assert.Equal(2, result.Count);
+        Assert.All(result, a => Assert.Equal(Provider.Odido, a.Provider));
     }
 
     [Fact]
-    public void HaalOverzichtOp_MetOnbekendeProvider_GeeftLegeListTerug()
+    public void HaalOverzichtOp_GeeftModelTerug_MetJuisteVelden()
     {
         var service = new AbonnementService(new FakeAbonnementRepository());
 
-        try
-        {
-            var result = service.HaalOverzichtOp("T-Mobile");
-            Assert.Empty(result);
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
-    }
+        Abonnement model = service.HaalOverzichtOp().First();
 
-    [Fact]
-    public void HaalOverzichtOp_GeeftDtoTerug_MetJuisteVelden()
-    {
-        var service = new AbonnementService(new FakeAbonnementRepository());
-
-        try
-        {
-            var dto = service.HaalOverzichtOp().First();
-            Assert.Equal(1, dto.Id);
-            Assert.Equal("Basis", dto.Naam);
-            Assert.Equal("Odido", dto.Provider);
-            Assert.Equal(10m, dto.PrijsPerMaand);
-            Assert.Equal("Basis pakket", dto.Beschrijving);
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
+        Assert.Equal(1, model.Id);
+        Assert.Equal("Basis", model.Naam);
+        Assert.Equal(Provider.Odido, model.Provider);
+        Assert.Equal(10m, model.PrijsPerMaand);
+        Assert.Equal("Basis pakket", model.Beschrijving);
     }
 
     [Fact]
@@ -79,46 +47,18 @@ public class AbonnementServiceTests
     {
         var service = new AbonnementService(new FakeLegeAbonnementRepository());
 
-        try
-        {
-            var result = service.HaalOverzichtOp();
-            Assert.Empty(result);
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
+        List<Abonnement> result = service.HaalOverzichtOp();
+
+        Assert.Empty(result);
     }
 
     [Fact]
-    public void HaalOverzichtOp_FilterIsHoofdlettergevoelig_GeeftLegeListTerug()
+    public void HaalOverzichtOp_InactieveAbonnementenWordenGefilterd()
     {
         var service = new AbonnementService(new FakeAbonnementRepository());
 
-        try
-        {
-            var result = service.HaalOverzichtOp("odido");
-            Assert.Empty(result);
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
-    }
+        List<Abonnement> result = service.HaalOverzichtOp();
 
-    [Fact]
-    public void HaalOverzichtOp_MetLegeStringAlsProvider_GeeftLegeListTerug()
-    {
-        var service = new AbonnementService(new FakeAbonnementRepository());
-
-        try
-        {
-            var result = service.HaalOverzichtOp("");
-            Assert.Empty(result);
-        }
-        catch (Exception ex)
-        {
-            Assert.Fail(ex.Message);
-        }
+        Assert.All(result, a => Assert.True(a.IsActief));
     }
 }

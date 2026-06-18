@@ -1,5 +1,5 @@
-@model List<AbonnementDto>
-@{// ❯ het zorgt ervoor dat de juiste list die in controller word gereturned en word gebruikt voor deze view en voila hij heeft alle juiste gegevens die op de pagina moeten getoond worden.
+@model AbonnementOverzichtViewModel
+@{
     ViewData["Title"] = "De Teleschuer — Kies uw abonnement";
 }
 
@@ -25,36 +25,35 @@
 
     <div class="filter-row">
         <form class="filter" method="get">
-        <label for="provider-select">Provider</label>
-        <span class="filter__select">
-            <select id="provider-select" name="provider">
-                <option value="">Alle providers</option>
-                <option value="Odido">Odido</option>
-                <option value="Vodafone">Vodafone</option>
-            </select>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-            </svg>
-        </span>
+            <label for="provider-select">Provider</label>
+            <span class="filter__select">
+                <select id="provider-select" name="provider">
+                    <option value="" selected="@(Model.GekozenProvider == null)">Alle providers</option>
+                    <option value="Odido" selected="@(Model.GekozenProvider == "Odido")">Odido</option>
+                    <option value="Vodafone" selected="@(Model.GekozenProvider == "Vodafone")">Vodafone</option>
+                </select>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </span>
             <button type="submit">Toepassen</button>
         </form>
     </div>
 
-    @if (Model.Count == 0) // als de lijst leeg is toon een melding anders de kaarten
+    @if (Model.Abonnementen.Count == 0)
     {
         <p class="empty">Er zijn op dit moment geen actieve abonnementen beschikbaar.</p>
     }
     else
     {
         <div class="cards">
-            @foreach (var abonnement in Model) //loop door elk abonnement en maak een kaart aan
+            @foreach (var abonnement in Model.Abonnementen)
             {
-                var naamDelen = abonnement.Naam.Split(new[] { ' ' }, 2); //naam splitsen op eerste spatie zodat eerste woord apart gestijld kan worden
+                var naamDelen = abonnement.Naam.Split(new[] { ' ' }, 2);
                 var voorwoord = naamDelen[0];
                 var hoofdwoord = naamDelen.Length > 1 ? naamDelen[1] : "";
-                var providerClass = abonnement.Provider == "Vodafone" ? "card--vodafone" : "card--odido"; //juiste css klasse op basis van provider
 
-                <article class="card @providerClass">
+                <article class="card @abonnement.ProviderCssKlasse">
                     <div class="card__head">
                         <h2 class="card__title">
                             <span class="pre">@voorwoord</span>
@@ -64,14 +63,7 @@
                             }
                         </h2>
                         <span class="card__logo">
-                            @if (abonnement.Provider == "Vodafone")
-                            {
-                                <img src="~/img/vodafone.png" alt="Vodafone" />
-                            }
-                            else if (abonnement.Provider == "Odido")
-                            {
-                                <img src="~/img/odido.webp" alt="Odido" />
-                            }
+                            <img src="@abonnement.ProviderLogoSrc" alt="@abonnement.ProviderTekst" />
                         </span>
                     </div>
 
@@ -81,10 +73,10 @@
 
                     <div class="card__foot">
                         <span class="card__price">
-                            <span class="amount">&euro;@abonnement.PrijsPerMaand.ToString("0.00")</span> @* altijd 2 decimalen tonen *@
+                            <span class="amount">&euro;@abonnement.PrijsPerMaand.ToString("0.00")</span>
                             <span class="per">/maand</span>
                         </span>
-                        <a class="card__btn" href="/aanvraag/starten?abonnementId=@abonnement.Id">Kies</a> @* id meesturen zodat de aanvraag weet welk abonnement gekozen is *@
+                        <a class="card__btn" href="/aanvraag/starten?abonnementId=@abonnement.Id">Kies</a>
                     </div>
                 </article>
             }

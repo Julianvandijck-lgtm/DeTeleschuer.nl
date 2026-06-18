@@ -1,25 +1,36 @@
 using Microsoft.AspNetCore.Mvc;
-using Interface.Dtos;
-using Interface.Services;
+using Interface.Enums;
+using Logic.Services;
+using Deteleschuer.nl.Mappers;
+using Deteleschuer.nl.ViewModels;
 
 namespace Deteleschuer.nl.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly IAbonnementService _abonnementService;
+    private readonly AbonnementService _abonnementService;
+    private readonly AbonnementViewModelMapper _mapper = new();
 
-    public HomeController(IAbonnementService abonnementService) // ik geef weer het juiste interface pakketje mee vanuit de service 
+    public HomeController(AbonnementService abonnementService)
     {
         _abonnementService = abonnementService;
     }
 
-    public IActionResult Index(string? provider = null) // IAction is de abstractie die ervoor zorgt dat alles word teruggestuurd naar de view het hele plaatje niet alleen een ruwe lijst 
+    public IActionResult Index(string? provider = null)
     {
-        List<AbonnementDto> abonnementen = _abonnementService.HaalOverzichtOp(provider);// controller maakt lijst 
-        return View(abonnementen);// stuurt data naar view
+        var gekozenProvider = Enum.TryParse<Provider>(provider, out var parsed) ? parsed : (Provider?)null;
+
+        var viewModel = new AbonnementOverzichtViewModel
+        {
+            Abonnementen = _abonnementService
+                .HaalOverzichtOp(gekozenProvider)
+                .Select(_mapper.NaarViewModel)
+                .ToList(),
+            GekozenProvider = provider
+        };
+
+        return View(viewModel);
     }
+}
 
-}   
-
-   
     
