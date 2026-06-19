@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Interface.Enums;
+using Interface.Models;
 using Logic.Mappers;
 using Logic.Services;
 using Deteleschuer.nl.Mappers;
@@ -19,13 +21,28 @@ public class DashboardController : Controller
         _notitieService = notitieService;
     }
 
-    public IActionResult Index()
+    public IActionResult Index(string? status = null, string? provider = null, string? zoek = null)
     {
+        AanvraagStatus? gekozenStatus = status != null
+            && Enum.TryParse<AanvraagStatus>(status, ignoreCase: true, out var parsedStatus)
+            && Enum.IsDefined(parsedStatus)
+                ? parsedStatus
+                : null;
+
+        Provider? gekozenProvider = provider != null
+            && Enum.TryParse<Provider>(provider, ignoreCase: true, out var parsedProvider)
+            && Enum.IsDefined(parsedProvider)
+                ? parsedProvider
+                : null;
+
         var viewModel = new AanvraagOverzichtViewModel
         {
-            Aanvragen = _aanvraagService.HaalOverzicht()
+            Aanvragen = _aanvraagService.HaalOverzicht(gekozenStatus, gekozenProvider, zoek)
                 .Select(AanvraagViewModelMapper.NaarRegelViewModel)
-                .ToList()
+                .ToList(),
+            GekozenStatus = status,
+            GekozenProvider = provider,
+            Zoekterm = zoek
         };
         return View(viewModel);
     }

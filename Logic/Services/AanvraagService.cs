@@ -36,7 +36,29 @@ public class AanvraagService
         _aanvraagRepository.Opslaan(AanvraagMapper.NaarDto(aanvraag));
     }
 
-    public List<AanvraagOverzichtDto> HaalOverzicht() => _aanvraagRepository.HaalAlleOp();
+    public List<AanvraagOverzichtDto> HaalOverzicht(
+        AanvraagStatus? status = null,
+        Provider? provider = null,
+        string? zoekterm = null)
+    {
+        var resultaat = _aanvraagRepository.HaalAlleOp();
+
+        if (status != null)
+            resultaat = resultaat.Where(d => d.Status == AanvraagMapper.NaarStatusString(status.Value)).ToList();
+
+        if (provider != null)
+            resultaat = resultaat.Where(d => d.Provider == provider.Value.ToString()).ToList();
+
+        if (!string.IsNullOrWhiteSpace(zoekterm))
+        {
+            var term = zoekterm.Trim();
+            resultaat = resultaat.Where(d =>
+                d.KlantNaam.Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                d.KlantEmail.Contains(term, StringComparison.OrdinalIgnoreCase)).ToList();
+        }
+
+        return resultaat;
+    }
 
     public AanvraagDetailDto? HaalDetail(int id) => _aanvraagRepository.HaalDetailOp(id);
 

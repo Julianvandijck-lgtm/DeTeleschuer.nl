@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Deteleschuer.nl")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+254fba7634fec39d96e117e34ba8c3ea24cfa7ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c63566f377ee650894e2b9f8f8aff6f957df55a")]
 [assembly: System.Reflection.AssemblyProductAttribute("Deteleschuer.nl")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Deteleschuer.nl")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -8,4 +8,5 @@ public class AanvraagOverzichtDto
     public required string AbonnementNaam { get; set; }
     public DateTime AanvraagDatum { get; set; }
     public required string Status { get; set; }
+    public string Provider { get; set; } = string.Empty;
 }

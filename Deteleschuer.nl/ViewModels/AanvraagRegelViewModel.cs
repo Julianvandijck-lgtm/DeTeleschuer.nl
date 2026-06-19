@@ -8,4 +8,5 @@ public class AanvraagRegelViewModel
     public string AbonnementNaam { get; set; } = string.Empty;
     public DateTime AanvraagDatum { get; set; }
     public string StatusTekst { get; set; } = string.Empty;
+    public string Provider { get; set; } = string.Empty;
 }

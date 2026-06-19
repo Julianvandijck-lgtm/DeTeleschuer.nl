@@ -1,6 +1,7 @@
 @model AanvraagOverzichtViewModel
 @{
     ViewData["Title"] = "De Teleschuer — Dashboard";
+    var filtersActief = Model.GekozenStatus != null || Model.GekozenProvider != null || !string.IsNullOrWhiteSpace(Model.Zoekterm);
 }
 
 @section Styles {
@@ -26,6 +27,26 @@
         }
 
         main { padding: var(--space-4); }
+
+        .filterbalk {
+            display: flex;
+            gap: var(--space-2);
+            align-items: center;
+            margin-bottom: var(--space-3);
+            flex-wrap: wrap;
+        }
+
+        .filterbalk select,
+        .filterbalk input[type="search"] {
+            font-family: inherit;
+            font-size: 0.95rem;
+            padding: 0.4rem 0.8rem;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius);
+            background: var(--color-surface);
+        }
+
+        .filterbalk input[type="search"] { min-width: 200px; }
 
         table {
             width: 100%;
@@ -60,6 +81,17 @@
             font-weight: 500;
         }
 
+        .knop {
+            padding: 0.4rem var(--space-2);
+            background: var(--color-accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 0.9rem;
+            cursor: pointer;
+        }
+
         .leeg { color: var(--color-muted); }
     </style>
 }
@@ -70,9 +102,34 @@
 </header>
 
 <main>
+    <form method="get" class="filterbalk">
+        <select name="status">
+            <option value="" selected="@(Model.GekozenStatus == null ? "selected" : null)">Alle statussen</option>
+            <option value="Nieuw" selected="@(Model.GekozenStatus == "Nieuw" ? "selected" : null)">Nieuw</option>
+            <option value="InBehandeling" selected="@(Model.GekozenStatus == "InBehandeling" ? "selected" : null)">In behandeling</option>
+            <option value="Afgerond" selected="@(Model.GekozenStatus == "Afgerond" ? "selected" : null)">Afgerond</option>
+        </select>
+        <select name="provider">
+            <option value="" selected="@(Model.GekozenProvider == null ? "selected" : null)">Alle providers</option>
+            <option value="Odido" selected="@(Model.GekozenProvider == "Odido" ? "selected" : null)">Odido</option>
+            <option value="Vodafone" selected="@(Model.GekozenProvider == "Vodafone" ? "selected" : null)">Vodafone</option>
+        </select>
+        <input type="search" name="zoek" value="@Model.Zoekterm" placeholder="Zoek op naam of e-mail…" />
+        <button class="knop" type="submit">Toepassen</button>
+    </form>
+
     @if (Model.Aanvragen.Count == 0)
     {
-        <p class="leeg">Er zijn nog geen aanvragen ingediend.</p>
+        <p class="leeg">
+            @if (filtersActief)
+            {
+                <span>Geen aanvragen gevonden voor de gekozen filters of zoekterm.</span>
+            }
+            else
+            {
+                <span>Er zijn nog geen aanvragen ingediend.</span>
+            }
+        </p>
     }
     else
     {
@@ -82,6 +139,7 @@
                     <th>Naam</th>
                     <th>E-mail</th>
                     <th>Abonnement</th>
+                    <th>Provider</th>
                     <th>Datum</th>
                     <th>Status</th>
                     <th></th>
@@ -94,6 +152,7 @@
                         <td>@aanvraag.KlantNaam</td>
                         <td>@aanvraag.KlantEmail</td>
                         <td>@aanvraag.AbonnementNaam</td>
+                        <td>@aanvraag.Provider</td>
                         <td>@aanvraag.AanvraagDatum.ToString("dd-MM-yyyy")</td>
                         <td>@aanvraag.StatusTekst</td>
                         <td><a class="detail-link" asp-controller="Dashboard" asp-action="Detail" asp-route-id="@aanvraag.Id">Bekijken →</a></td>

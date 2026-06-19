@@ -48,7 +48,7 @@ public class AanvraagRepository : IAanvraagRepository
             using var connection = new SqlConnection(_connectionString);
             connection.Open();
 
-            var sql = @"SELECT a.ID, k.Naam, k.Email, ab.Naam AS AbonnementNaam, a.AanvraagDatum, a.Status
+            var sql = @"SELECT a.ID, k.Naam, k.Email, ab.Naam AS AbonnementNaam, ab.Provider, a.AanvraagDatum, a.Status
                         FROM Aanvraag a
                         JOIN Klant k ON a.KlantID = k.ID
                         JOIN Abonnement ab ON a.AbonnementID = ab.ID
@@ -65,6 +65,7 @@ public class AanvraagRepository : IAanvraagRepository
                     KlantNaam = (string)reader["Naam"],
                     KlantEmail = (string)reader["Email"],
                     AbonnementNaam = (string)reader["AbonnementNaam"],
+                    Provider = (string)reader["Provider"],
                     AanvraagDatum = (DateTime)reader["AanvraagDatum"],
                     Status = (string)reader["Status"]
                 });

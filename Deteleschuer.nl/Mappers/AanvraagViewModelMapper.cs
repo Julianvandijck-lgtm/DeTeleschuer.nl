@@ -14,7 +14,8 @@ public static class AanvraagViewModelMapper
             KlantEmail = dto.KlantEmail,
             AbonnementNaam = dto.AbonnementNaam,
             AanvraagDatum = dto.AanvraagDatum,
-            StatusTekst = dto.Status
+            StatusTekst = dto.Status,
+            Provider = dto.Provider
         };
     }
 
