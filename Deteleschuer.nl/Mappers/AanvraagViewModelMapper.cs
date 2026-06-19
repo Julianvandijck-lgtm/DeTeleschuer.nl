@@ -18,7 +18,7 @@ public static class AanvraagViewModelMapper
         };
     }
 
-    public static AanvraagDetailViewModel NaarDetailViewModel(AanvraagDetailDto dto)
+    public static AanvraagDetailViewModel NaarDetailViewModel(AanvraagDetailDto dto, List<NotitieDto> notities)
     {
         return new AanvraagDetailViewModel
         {
@@ -36,7 +36,13 @@ public static class AanvraagViewModelMapper
             StatusTekst = dto.Status,
             NummerBehouden = dto.NummerBehouden,
             DigitaleHandtekening = dto.DigitaleHandtekening,
-            Notities = dto.Notities
+            Notities = notities.Select(n => new NotitieViewModel
+            {
+                Id = n.Id,
+                AanvraagId = n.AanvraagId,
+                Tekst = n.Tekst,
+                DatumAangemaakt = n.DatumAangemaakt
+            }).ToList()
         };
     }
 }

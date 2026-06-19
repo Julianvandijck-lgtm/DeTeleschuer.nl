@@ -1,5 +1,3 @@
-using Interface.Models;
-
 namespace Interface.Dtos;
 
 public class AanvraagDetailDto
@@ -18,5 +16,4 @@ public class AanvraagDetailDto
     public string Status { get; set; } = string.Empty;
     public bool? NummerBehouden { get; set; }
     public string DigitaleHandtekening { get; set; } = string.Empty;
-    public List<Notitie> Notities { get; set; } = [];
 }

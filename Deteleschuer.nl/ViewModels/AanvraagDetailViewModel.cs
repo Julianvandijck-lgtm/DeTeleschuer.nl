@@ -1,5 +1,3 @@
-using Interface.Models;
-
 namespace Deteleschuer.nl.ViewModels;
 
 public class AanvraagDetailViewModel
@@ -18,5 +16,5 @@ public class AanvraagDetailViewModel
     public string StatusTekst { get; set; } = string.Empty;
     public bool? NummerBehouden { get; set; }
     public string DigitaleHandtekening { get; set; } = string.Empty;
-    public List<Notitie> Notities { get; set; } = [];
+    public List<NotitieViewModel> Notities { get; set; } = [];
 }

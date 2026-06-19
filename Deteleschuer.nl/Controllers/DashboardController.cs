@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Interface.Models;
-using Interface.Repositories;
 using Logic.Mappers;
 using Logic.Services;
 using Deteleschuer.nl.Mappers;
@@ -13,12 +11,12 @@ namespace Deteleschuer.nl.Controllers;
 public class DashboardController : Controller
 {
     private readonly AanvraagService _aanvraagService;
-    private readonly INotitieRepository _notitieRepository;
+    private readonly NotitieService _notitieService;
 
-    public DashboardController(AanvraagService aanvraagService, INotitieRepository notitieRepository)
+    public DashboardController(AanvraagService aanvraagService, NotitieService notitieService)
     {
         _aanvraagService = aanvraagService;
-        _notitieRepository = notitieRepository;
+        _notitieService = notitieService;
     }
 
     public IActionResult Index()
@@ -37,8 +35,8 @@ public class DashboardController : Controller
         var dto = _aanvraagService.HaalDetail(id);
         if (dto == null) return RedirectToAction("Index");
 
-        dto.Notities = _notitieRepository.HaalOpVoorAanvraag(id);
-        return View(AanvraagViewModelMapper.NaarDetailViewModel(dto));
+        var notities = _notitieService.HaalVoorAanvraag(id);
+        return View(AanvraagViewModelMapper.NaarDetailViewModel(dto, notities));
     }
 
     [HttpPost]
@@ -58,19 +56,14 @@ public class DashboardController : Controller
     [HttpPost]
     public IActionResult NotitieOpslaan(int aanvraagId, string tekst)
     {
-        _notitieRepository.Opslaan(new Notitie
-        {
-            AanvraagId = aanvraagId,
-            Tekst = tekst,
-            DatumAangemaakt = DateTime.Now
-        });
+        _notitieService.Toevoegen(aanvraagId, tekst);
         return RedirectToAction("Detail", new { id = aanvraagId });
     }
 
     [HttpPost]
     public IActionResult NotitieBijwerken(int id, int aanvraagId, string tekst)
     {
-        _notitieRepository.Bijwerken(new Notitie { Id = id, AanvraagId = aanvraagId, Tekst = tekst });
+        _notitieService.Bijwerken(id, tekst);
         return RedirectToAction("Detail", new { id = aanvraagId });
     }
 }

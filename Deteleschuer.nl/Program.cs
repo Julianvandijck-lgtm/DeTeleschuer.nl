@@ -34,6 +34,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 
 builder.Services.AddScoped<INotitieRepository>(sp => new NotitieRepository(connectionString));
+builder.Services.AddScoped<NotitieService>();
 
 var app = builder.Build();
 
