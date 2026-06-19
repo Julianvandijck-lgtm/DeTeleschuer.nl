@@ -1,9 +1,9 @@
-using Interface.Models;
+using Interface.Dtos;
 
 namespace Interface.Repositories;
 
 public interface IGebruikerRepository
 {
-    Gebruiker? HaalOpViaGebruikersnaam(string gebruikersnaam);
-    void Aanmaken(string gebruikersnaam, string wachtwoordHash); // hash word gemaakt in service 
+    GebruikerDto? HaalOpViaGebruikersnaam(string gebruikersnaam);
+    void Aanmaken(GebruikerDto gebruiker);
 }

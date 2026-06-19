@@ -1,5 +1,4 @@
 using Interface.Repositories;
-using Interface.Services;
 using Dal.Repositories;
 using Logic.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -25,7 +24,7 @@ builder.Services.AddScoped<IAanvraagRepository>(sp => new AanvraagRepository(con
 builder.Services.AddScoped<AanvraagService>();
 
 builder.Services.AddScoped<IGebruikerRepository>(sp => new GebruikerRepository(connectionString));
-builder.Services.AddScoped<IInlogService, InlogService>();
+builder.Services.AddScoped<InlogService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
@@ -42,12 +41,10 @@ app.UseAuthentication();
 
 using (var scope = app.Services.CreateScope())
 {
+    var inlogService = scope.ServiceProvider.GetRequiredService<InlogService>();
     var gebruikerRepo = scope.ServiceProvider.GetRequiredService<IGebruikerRepository>();
     if (gebruikerRepo.HaalOpViaGebruikersnaam("Roland") == null)
-    {
-        var hash = BCrypt.Net.BCrypt.HashPassword("Roland123");
-        gebruikerRepo.Aanmaken("Roland", hash);
-    }
+        inlogService.RegistreerGebruiker("Roland", "Roland123");
 }
 
 // Configure the HTTP request pipeline.

@@ -1,10 +1,10 @@
-using BCrypt.Net;
+using Interface.Models;
 using Interface.Repositories;
-using Interface.Services;
+using Logic.Mappers;
 
 namespace Logic.Services;
 
-public class InlogService : IInlogService
+public class InlogService
 {
     private readonly IGebruikerRepository _gebruikerRepository;
 
@@ -15,8 +15,16 @@ public class InlogService : IInlogService
 
     public bool ControleerInloggegevens(string gebruikersnaam, string wachtwoord)
     {
-        var gebruiker = _gebruikerRepository.HaalOpViaGebruikersnaam(gebruikersnaam);
-        if (gebruiker == null) return false;
-        return BCrypt.Net.BCrypt.Verify(wachtwoord, gebruiker.WachtwoordHash); // ik maak van mijn ww een hash met Bcrypt dus hij maakt van mijn ww een hele lange salt zodat niemand hem kan kraken 
-    }// ik kan er nu zelf ook niet meer bij dus moet hem goed onthouden 
+        var dto = _gebruikerRepository.HaalOpViaGebruikersnaam(gebruikersnaam);
+        if (dto == null) return false;
+        var model = GebruikerMapper.NaarModel(dto);
+        return BCrypt.Net.BCrypt.Verify(wachtwoord, model.WachtwoordHash);
+    }
+
+    public void RegistreerGebruiker(string gebruikersnaam, string wachtwoord)
+    {
+        var hash = BCrypt.Net.BCrypt.HashPassword(wachtwoord);
+        var model = new Gebruiker(gebruikersnaam, hash);
+        _gebruikerRepository.Aanmaken(GebruikerMapper.NaarDto(model));
+    }
 }

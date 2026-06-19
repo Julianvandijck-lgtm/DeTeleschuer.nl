@@ -44,7 +44,14 @@ public class DashboardController : Controller
     [HttpPost]
     public IActionResult StatusBijwerken(int id, string status)
     {
-        _aanvraagService.WerkStatusBij(id, AanvraagMapper.NaarStatusEnum(status));
+        try
+        {
+            _aanvraagService.WerkStatusBij(id, AanvraagMapper.NaarStatusEnum(status));
+        }
+        catch (ArgumentException)
+        {
+            // Ongeldige statuswaarde (gemanipuleerde POST) — stil negeren
+        }
         return RedirectToAction("Detail", new { id });
     }
 

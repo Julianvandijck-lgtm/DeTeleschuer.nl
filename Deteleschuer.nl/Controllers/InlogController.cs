@@ -3,15 +3,15 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Deteleschuer.nl.ViewModels;
-using Interface.Services;
+using Logic.Services;
 
 namespace Deteleschuer.nl.Controllers;
 
 public class InlogController : Controller
 {
-    private readonly IInlogService _inlogService;
+    private readonly InlogService _inlogService;
 
-    public InlogController(IInlogService inlogService)
+    public InlogController(InlogService inlogService)
     {
         _inlogService = inlogService;
     }
