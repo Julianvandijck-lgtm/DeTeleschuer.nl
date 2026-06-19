@@ -17,3 +17,4 @@
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/DeTeleschuer.Tests /obj/Debug/net8.0/DeTeleschuer.Tests.pdb
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/DeTeleschuer.Tests /obj/Debug/net8.0/DeTeleschuer.Tests.genruntimeconfig.cache
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/DeTeleschuer.Tests /obj/Debug/net8.0/ref/DeTeleschuer.Tests.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/DeTeleschuer.Tests /obj/Debug/net8.0/DeTeleschuer.Tests.sourcelink.json

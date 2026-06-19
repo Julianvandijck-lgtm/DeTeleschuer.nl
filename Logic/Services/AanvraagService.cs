@@ -1,13 +1,15 @@
+using Interface.Dtos;
+using Interface.Enums;
 using Interface.Models;
 using Interface.Repositories;
-using Interface.Services;
+using Logic.Mappers;
 
 namespace Logic.Services;
 
-public class AanvraagService : IAanvraagService
+public class AanvraagService
 {
     private readonly IKlantRepository _klantRepository;
-    private readonly IAanvraagRepository _aanvraagRepository; // 2 repositorys omdat we te maken hebben met 2 aparte entiteiten in een proces 
+    private readonly IAanvraagRepository _aanvraagRepository;
 
     public AanvraagService(IKlantRepository klantRepository, IAanvraagRepository aanvraagRepository)
     {
@@ -15,15 +17,29 @@ public class AanvraagService : IAanvraagService
         _aanvraagRepository = aanvraagRepository;
     }
 
-    public void AanvraagOpslaan(Klant klant, Aanvraag aanvraag)
+    public void AanvraagOpslaan(Klant klant, int abonnementId, bool? nummerBehouden, string digitaleHandtekening)
     {
         var bestaandId = _klantRepository.HaalIdOpViaEmail(klant.Email);
-        var klantId = bestaandId ?? _klantRepository.Opslaan(klant); // bestaat klant al? hergebruik klant id anders nieuw aanmaken
-        aanvraag.KlantId = klantId;
-        _aanvraagRepository.Opslaan(aanvraag);
-    }
-}
+        var klantId = bestaandId ?? _klantRepository.Opslaan(KlantMapper.NaarDto(klant));
 
-// je moet klant opslaan wil je een aanrvaag kunnen opslaan want daar staan alle hgegevens in en met die klant id geef je dus die gegevens mee aan de aanvraag
-// geen klant id in de aanvraag is geen insert 
-// hij onthoud klant gegevens aan Email zodra hij email herkent worden de oude gegevens direct overgenomen: klantgegevens en documenten. string abonnement en die andere horen allemaal bij aanvraag dus doe worden wel mee aangepast 
+        var aanvraag = new Aanvraag(
+            id: 0,
+            klantId: klantId,
+            abonnementId: abonnementId,
+            aanvraagDatum: DateTime.Now,
+            status: AanvraagStatus.Nieuw,
+            nummerBehouden: nummerBehouden,
+            digitaleHandtekening: digitaleHandtekening,
+            handtekeningDatum: DateTime.Now
+        );
+
+        _aanvraagRepository.Opslaan(AanvraagMapper.NaarDto(aanvraag));
+    }
+
+    public List<AanvraagOverzichtDto> HaalOverzicht() => _aanvraagRepository.HaalAlleOp();
+
+    public AanvraagDetailDto? HaalDetail(int id) => _aanvraagRepository.HaalDetailOp(id);
+
+    public void WerkStatusBij(int id, AanvraagStatus status) =>
+        _aanvraagRepository.StatusBijwerken(id, AanvraagMapper.NaarStatusString(status));
+}

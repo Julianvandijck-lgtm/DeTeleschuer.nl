@@ -1,9 +1,9 @@
-using Interface.Models;
+using Interface.Dtos;
 
 namespace Interface.Repositories;
 
 public interface IKlantRepository
 {
-    int Opslaan(Klant klant);
+    int Opslaan(KlantDto klant);
     int? HaalIdOpViaEmail(string email);
 }

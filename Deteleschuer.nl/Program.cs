@@ -22,7 +22,7 @@ builder.Services.AddScoped<IKlantRepository>(sp => new KlantRepository(connectio
 
 builder.Services.AddScoped<IAanvraagRepository>(sp => new AanvraagRepository(connectionString));
 
-builder.Services.AddScoped<IAanvraagService, AanvraagService>();
+builder.Services.AddScoped<AanvraagService>();
 
 builder.Services.AddScoped<IGebruikerRepository>(sp => new GebruikerRepository(connectionString));
 builder.Services.AddScoped<IInlogService, InlogService>();

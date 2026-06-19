@@ -8,7 +8,6 @@ namespace Logic.Services;
 public class AbonnementService
 {
     private readonly IAbonnementRepository _abonnementRepository;
-    private readonly AbonnementMapper _mapper = new();
 
     public AbonnementService(IAbonnementRepository abonnementRepository)
     {
@@ -18,7 +17,7 @@ public class AbonnementService
     public List<Abonnement> HaalOverzichtOp(Provider? provider = null)
     {
         return _abonnementRepository.HaalAlleOp()
-            .Select(_mapper.NaarModel)
+            .Select(AbonnementMapper.NaarModel)
             .Where(a => a.IsActief)
             .Where(a => provider == null || a.Provider == provider)
             .ToList();

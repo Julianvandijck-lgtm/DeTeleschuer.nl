@@ -13,3 +13,4 @@
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/refint/Logic.dll
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.pdb
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/ref/Logic.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Logic/obj/Debug/net8.0/Logic.sourcelink.json

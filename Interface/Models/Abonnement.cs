@@ -11,7 +11,7 @@ public class Abonnement
     public bool IsActief { get; }
     public string Beschrijving { get; }
 
-    public Abonnement(int id, string naam, Provider provider, decimal prijsPerMaand, string beschrijving, bool isActief = false)
+    public Abonnement(int id, string naam, Provider provider, decimal prijsPerMaand, bool isActief, string beschrijving)
     {
         if (string.IsNullOrWhiteSpace(naam))
             throw new ArgumentException("Naam mag niet leeg zijn.", nameof(naam));
@@ -26,7 +26,7 @@ public class Abonnement
         Naam = naam;
         Provider = provider;
         PrijsPerMaand = prijsPerMaand;
-        Beschrijving = beschrijving;
         IsActief = isActief;
+        Beschrijving = beschrijving;
     }
 }

@@ -13,3 +13,4 @@
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Dal/obj/Debug/net8.0/refint/Dal.dll
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Dal/obj/Debug/net8.0/Dal.pdb
 /Users/julianvdijck/RiderProjects/Deteleschuer.nl/Dal/obj/Debug/net8.0/ref/Dal.dll
+/Users/julianvdijck/RiderProjects/Deteleschuer.nl/Dal/obj/Debug/net8.0/Dal.sourcelink.json

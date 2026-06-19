@@ -1,5 +1,4 @@
-@using Interface.Dtos
-@model List<AanvraagOverzichtDto>
+@model AanvraagOverzichtViewModel
 @{
     ViewData["Title"] = "De Teleschuer — Dashboard";
 }
@@ -71,7 +70,7 @@
 </header>
 
 <main>
-    @if (Model.Count == 0)
+    @if (Model.Aanvragen.Count == 0)
     {
         <p class="leeg">Er zijn nog geen aanvragen ingediend.</p>
     }
@@ -89,14 +88,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach (var aanvraag in Model)
+                @foreach (var aanvraag in Model.Aanvragen)
                 {
                     <tr>
                         <td>@aanvraag.KlantNaam</td>
                         <td>@aanvraag.KlantEmail</td>
                         <td>@aanvraag.AbonnementNaam</td>
                         <td>@aanvraag.AanvraagDatum.ToString("dd-MM-yyyy")</td>
-                        <td>@aanvraag.Status</td>
+                        <td>@aanvraag.StatusTekst</td>
                         <td><a class="detail-link" asp-controller="Dashboard" asp-action="Detail" asp-route-id="@aanvraag.Id">Bekijken →</a></td>
                     </tr>
                 }

@@ -1,40 +1,50 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Interface.Repositories;
 using Interface.Models;
+using Interface.Repositories;
+using Logic.Mappers;
+using Logic.Services;
+using Deteleschuer.nl.Mappers;
+using Deteleschuer.nl.ViewModels;
 
 namespace Deteleschuer.nl.Controllers;
 
 [Authorize]
 public class DashboardController : Controller
 {
-    private readonly IAanvraagRepository _aanvraagRepository;
+    private readonly AanvraagService _aanvraagService;
     private readonly INotitieRepository _notitieRepository;
 
-    public DashboardController(IAanvraagRepository aanvraagRepository, INotitieRepository notitieRepository)
+    public DashboardController(AanvraagService aanvraagService, INotitieRepository notitieRepository)
     {
-        _aanvraagRepository = aanvraagRepository;
+        _aanvraagService = aanvraagService;
         _notitieRepository = notitieRepository;
     }
 
     public IActionResult Index()
     {
-        var aanvragen = _aanvraagRepository.HaalAlleOp();
-        return View(aanvragen);
+        var viewModel = new AanvraagOverzichtViewModel
+        {
+            Aanvragen = _aanvraagService.HaalOverzicht()
+                .Select(AanvraagViewModelMapper.NaarRegelViewModel)
+                .ToList()
+        };
+        return View(viewModel);
     }
 
     public IActionResult Detail(int id)
     {
-        var aanvraag = _aanvraagRepository.HaalDetailOp(id);
-        if (aanvraag == null) return RedirectToAction("Index");
-        aanvraag.Notities = _notitieRepository.HaalOpVoorAanvraag(id);
-        return View(aanvraag);
+        var dto = _aanvraagService.HaalDetail(id);
+        if (dto == null) return RedirectToAction("Index");
+
+        dto.Notities = _notitieRepository.HaalOpVoorAanvraag(id);
+        return View(AanvraagViewModelMapper.NaarDetailViewModel(dto));
     }
 
     [HttpPost]
     public IActionResult StatusBijwerken(int id, string status)
     {
-        _aanvraagRepository.StatusBijwerken(id, status);
+        _aanvraagService.WerkStatusBij(id, AanvraagMapper.NaarStatusEnum(status));
         return RedirectToAction("Detail", new { id });
     }
 

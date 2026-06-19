@@ -9,7 +9,6 @@ namespace Deteleschuer.nl.Controllers;
 public class HomeController : Controller
 {
     private readonly AbonnementService _abonnementService;
-    private readonly AbonnementViewModelMapper _mapper = new();
 
     public HomeController(AbonnementService abonnementService)
     {
@@ -18,13 +17,17 @@ public class HomeController : Controller
 
     public IActionResult Index(string? provider = null)
     {
-        var gekozenProvider = Enum.TryParse<Provider>(provider, out var parsed) ? parsed : (Provider?)null;
+        Provider? gekozenProvider = provider != null
+            && Enum.TryParse<Provider>(provider, ignoreCase: true, out var parsed)
+            && Enum.IsDefined(parsed)
+                ? parsed
+                : null;
 
         var viewModel = new AbonnementOverzichtViewModel
         {
             Abonnementen = _abonnementService
                 .HaalOverzichtOp(gekozenProvider)
-                .Select(_mapper.NaarViewModel)
+                .Select(AbonnementViewModelMapper.NaarViewModel)
                 .ToList(),
             GekozenProvider = provider
         };

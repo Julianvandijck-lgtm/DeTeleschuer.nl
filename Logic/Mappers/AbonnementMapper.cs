@@ -4,11 +4,11 @@ using Interface.Models;
 
 namespace Logic.Mappers;
 
-public class AbonnementMapper
+public static class AbonnementMapper
 {
-    public Abonnement NaarModel(AbonnementDto dto)
+    public static Abonnement NaarModel(AbonnementDto dto)
     {
-        if (!Enum.TryParse<Provider>(dto.Provider, out var provider))
+        if (!Enum.TryParse<Provider>(dto.Provider, out var provider) || !Enum.IsDefined(provider))
             throw new ArgumentException($"Onbekende provider waarde '{dto.Provider}' in de database.", nameof(dto));
 
         return new Abonnement(
@@ -16,12 +16,12 @@ public class AbonnementMapper
             naam: dto.Naam,
             provider: provider,
             prijsPerMaand: dto.PrijsPerMaand,
-            beschrijving: dto.Beschrijving,
-            isActief: dto.IsActief
+            isActief: dto.IsActief,
+            beschrijving: dto.Beschrijving
         );
     }
 
-    public AbonnementDto NaarDto(Abonnement model)
+    public static AbonnementDto NaarDto(Abonnement model)
     {
         return new AbonnementDto
         {

@@ -4,9 +4,9 @@ using Deteleschuer.nl.ViewModels;
 
 namespace Deteleschuer.nl.Mappers;
 
-public class AbonnementViewModelMapper
+public static class AbonnementViewModelMapper
 {
-    public AbonnementViewModel NaarViewModel(Abonnement model)
+    public static AbonnementViewModel NaarViewModel(Abonnement model)
     {
         var (tekst, cssKlasse, logoSrc) = model.Provider switch
         {

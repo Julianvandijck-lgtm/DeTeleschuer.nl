@@ -1,18 +1,36 @@
-namespace  Interface.Models;
+using Interface.Enums;
+
+namespace Interface.Models;
 
 public class Aanvraag
 {
-    public int Id { get; set; }
-    public int KlantId { get; set; }
-    public int AbonnementId { get; set; }
-    public DateTime AanvraagDatum { get; set; }
-    public required string Status { get; set; }
-    public bool? NummerBehouden { get; set; }
-    public required string DigitaleHandtekening  { get; set; } // geen map mar gewoon string reeks tekens
-    public DateTime HandtekeningDatum { get; set; }
+    public int Id { get; }
+    public int KlantId { get; }
+    public int AbonnementId { get; }
+    public DateTime AanvraagDatum { get; }
+    public AanvraagStatus Status { get; }
+    public bool? NummerBehouden { get; }
+    public string DigitaleHandtekening { get; }
+    public DateTime HandtekeningDatum { get; }
 
-    public Aanvraag()
+    public Aanvraag(int id, int klantId, int abonnementId, DateTime aanvraagDatum, AanvraagStatus status, bool? nummerBehouden, string digitaleHandtekening, DateTime handtekeningDatum)
     {
-        
+        if (abonnementId <= 0)
+            throw new ArgumentException("AbonnementId moet groter zijn dan 0.", nameof(abonnementId));
+        if (klantId < 0)
+            throw new ArgumentException("KlantId mag niet negatief zijn.", nameof(klantId));
+        if (string.IsNullOrWhiteSpace(digitaleHandtekening))
+            throw new ArgumentException("Digitale handtekening mag niet leeg zijn.", nameof(digitaleHandtekening));
+        if (!Enum.IsDefined(typeof(AanvraagStatus), status))
+            throw new ArgumentException("Ongeldige aanvraagstatus.", nameof(status));
+
+        Id = id;
+        KlantId = klantId;
+        AbonnementId = abonnementId;
+        AanvraagDatum = aanvraagDatum;
+        Status = status;
+        NummerBehouden = nummerBehouden;
+        DigitaleHandtekening = digitaleHandtekening;
+        HandtekeningDatum = handtekeningDatum;
     }
 }
